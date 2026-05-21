@@ -1,0 +1,33 @@
+{
+  "sku": "CP90",
+  "label": "Port & Company Knit Cap",
+  "brand": "Port & Company",
+  "garment_type": "hat",
+  "base_price": 3.39,
+  "source": "blankstyle.com / logoshirtsdirect.com",
+  "notes": "IMPORTANT: CP90 is a Port & Company knit beanie, NOT a Yupoong snapback. The original brief labeled this as Yupoong CP90 which does not exist - Yupoong has no CP90. This is the correct CP90 product. 100% acrylic knit, 3-inch folding cuff, one size. 27 colors confirmed.",
+  "hex_map": {
+    "Black": "#000000",
+    "White": "#FFFFFF",
+    "Navy": "#1B2951",
+    "Athletic Royal": "#1D4F91",
+    "Athletic Red": "#C8102E",
+    "Athletic Green": "#1B7339",
+    "Athletic Orange": "#E36F1E",
+    "Athletic Gold": "#C8A008",
+    "Athletic Purple": "#4B2673",
+    "Athletic Oxford": "#7B8186",
+    "Charcoal Heather": "#5A5E62",
+    "Maroon": "#6D1C1C",
+    "Brown": "#5C3C2E",
+    "Coyote Brown": "#81613E",
+    "Woodland Brown": "#4B3621",
+    "Olive Drab Green": "#6B8E23",
+    "Millennium Blue": "#2E4E7C",
+    "Neon Blue": "#0099FF",
+    "Neon Green": "#39FF14",
+    "Neon Orange": "#FF6600",
+    "Neon Pink Glo": "#FF1493",
+    "Neon Yellow": "#FFEB00"
+  }
+}

@@ -1,0 +1,25 @@
+{
+  "sku": "5080",
+  "label": "Heavy Cotton Tee",
+  "brand": "AS Colour",
+  "garment_type": "tshirt",
+  "retail_price": 32.0,
+  "base_price": 16.0,
+  "product_url": "https://ascolour.com/heavy-tee-5080/",
+  "hex_map": {
+    "White": "#FFFFFF",
+    "Orchid": "#E3DDE3",
+    "Ecru": "#E4E0D4",
+    "Butter": "#F4F0D7",
+    "Pistachio": "#B2B799",
+    "Eucalyptus": "#938E71",
+    "Cypress": "#51594A",
+    "Pine Green": "#1D342A",
+    "Walnut": "#6B5A4A",
+    "Red": "#BB1016",
+    "Midnight Blue": "#35374C",
+    "Navy": "#1E202C",
+    "Athletic Heather": "#A4A4A2",
+    "Black": "#000000"
+  }
+}

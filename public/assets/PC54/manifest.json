@@ -1,0 +1,494 @@
+[
+  {
+    "code": "AquaticBl",
+    "name": "Aquatic Blue",
+    "flat": "https://cdnp.sanmar.com/medias/sys_master/images/h4f/h82/30954620878878/624Wx724H_3985_AquaticBl-0-PC54AquaticBlModelFront3/624Wx724H-3985-AquaticBl-0-PC54AquaticBlModelFront3.jpg",
+    "swatch": "https://cdnp.sanmar.com/medias/sys_master/images/h41/hcb/28861725605918/50W_PC54_ATHLETICKELLY_swatch/50W-PC54-ATHLETICKELLY-swatch.gif"
+  },
+  {
+    "code": "Ash",
+    "name": "Ash",
+    "flat": "https://cdnp.sanmar.com/medias/sys_master/images/h34/h23/30954621534238/624Wx724H_3985_Ash-0-PC54AshModelFront3/624Wx724H-3985-Ash-0-PC54AshModelFront3.jpg",
+    "swatch": "https://cdnp.sanmar.com/medias/sys_master/images/h41/hcb/28861725605918/50W_PC54_ATHLETICKELLY_swatch/50W-PC54-ATHLETICKELLY-swatch.gif"
+  },
+  {
+    "code": "AthlHthr",
+    "name": "Athletic Heather",
+    "flat": "https://cdnp.sanmar.com/medias/sys_master/images/h32/h4d/30954622713886/624Wx724H_3985_AthlHthr-0-PC54AthlHthrModelFront3/624Wx724H-3985-AthlHthr-0-PC54AthlHthrModelFront3.jpg",
+    "swatch": "https://cdnp.sanmar.com/medias/sys_master/images/h41/hcb/28861725605918/50W_PC54_ATHLETICKELLY_swatch/50W-PC54-ATHLETICKELLY-swatch.gif"
+  },
+  {
+    "code": "AthKlly",
+    "name": "Athletic Kelly",
+    "flat": "https://cdnp.sanmar.com/medias/sys_master/images/h92/h33/30951896547358/624Wx724H_3985_AthKlly-12-PC54AthKllyFlatFront1/624Wx724H-3985-AthKlly-12-PC54AthKllyFlatFront1.jpg",
+    "swatch": "https://cdnp.sanmar.com/medias/sys_master/images/h41/hcb/28861725605918/50W_PC54_ATHLETICKELLY_swatch/50W-PC54-ATHLETICKELLY-swatch.gif"
+  },
+  {
+    "code": "AthlMaroon",
+    "name": "Athletic Maroon",
+    "flat": "https://cdnp.sanmar.com/medias/sys_master/images/h2a/ha6/30954623238174/624Wx724H_3985_AthlMaroon-0-PC54AthlMaroonModelFront3/624Wx724H-3985-AthlMaroon-0-PC54AthlMaroonModelFront3.jpg",
+    "swatch": "https://cdnp.sanmar.com/medias/sys_master/images/h41/hcb/28861725605918/50W_PC54_ATHLETICKELLY_swatch/50W-PC54-ATHLETICKELLY-swatch.gif"
+  },
+  {
+    "code": "BlkHthr",
+    "name": "Black Heather",
+    "flat": "https://cdnp.sanmar.com/medias/sys_master/images/h9b/h8f/30951897137182/624Wx724H_3985_BlkHthr-12-PC54BlkHthrFlatFront1/624Wx724H-3985-BlkHthr-12-PC54BlkHthrFlatFront1.jpg",
+    "swatch": "https://cdnp.sanmar.com/medias/sys_master/images/h81/h62/28874925408286/50W_PC54_BLACKHEATHER_swatch/50W-PC54-BLACKHEATHER-swatch.gif"
+  },
+  {
+    "code": "BrightAqua",
+    "name": "Bright Aqua",
+    "flat": "https://cdnp.sanmar.com/medias/sys_master/images/h49/hbb/30954623893534/624Wx724H_3985_BrightAqua-0-PC54BrightAquaModelFront3/624Wx724H-3985-BrightAqua-0-PC54BrightAquaModelFront3.jpg",
+    "swatch": "https://cdnp.sanmar.com/medias/sys_master/images/h41/hcb/28861725605918/50W_PC54_ATHLETICKELLY_swatch/50W-PC54-ATHLETICKELLY-swatch.gif"
+  },
+  {
+    "code": "CandyPink",
+    "name": "Candy Pink",
+    "flat": "https://cdnp.sanmar.com/medias/sys_master/images/h3a/hf6/30954624090142/624Wx724H_3985_CandyPink-0-PC54CandyPinkModelFront3/624Wx724H-3985-CandyPink-0-PC54CandyPinkModelFront3.jpg",
+    "swatch": "https://cdnp.sanmar.com/medias/sys_master/images/h41/hcb/28861725605918/50W_PC54_ATHLETICKELLY_swatch/50W-PC54-ATHLETICKELLY-swatch.gif"
+  },
+  {
+    "code": "Cardinal",
+    "name": "Cardinal",
+    "flat": "https://cdnp.sanmar.com/medias/sys_master/images/h7d/hef/30954624286750/624Wx724H_3985_Cardinal-0-PC54CardinalModelFront3/624Wx724H-3985-Cardinal-0-PC54CardinalModelFront3.jpg",
+    "swatch": "https://cdnp.sanmar.com/medias/sys_master/images/h41/hcb/28861725605918/50W_PC54_ATHLETICKELLY_swatch/50W-PC54-ATHLETICKELLY-swatch.gif"
+  },
+  {
+    "code": "CarolinaBl",
+    "name": "Carolina Blue",
+    "flat": "https://cdnp.sanmar.com/medias/sys_master/images/hac/he8/30954624483358/624Wx724H_3985_CarolinaBl-0-PC54CarolinaBlModelFront3/624Wx724H-3985-CarolinaBl-0-PC54CarolinaBlModelFront3.jpg",
+    "swatch": "https://cdnp.sanmar.com/medias/sys_master/images/h41/hcb/28861725605918/50W_PC54_ATHLETICKELLY_swatch/50W-PC54-ATHLETICKELLY-swatch.gif"
+  },
+  {
+    "code": "Charcoal",
+    "name": "Charcoal",
+    "flat": "https://cdnp.sanmar.com/medias/sys_master/images/hf0/he1/30954624679966/624Wx724H_3985_Charcoal-0-PC54CharcoalModelFront3/624Wx724H-3985-Charcoal-0-PC54CharcoalModelFront3.jpg",
+    "swatch": "https://cdnp.sanmar.com/medias/sys_master/images/h7f/hca/28861725671454/50W_PC54_COALGREY_swatch/50W-PC54-COALGREY-swatch.gif"
+  },
+  {
+    "code": "ChryBlsm",
+    "name": "Cherry Blossom",
+    "flat": "https://cdnp.sanmar.com/medias/sys_master/images/h91/he0/30949717966878/624Wx724H_7047_HthrRyNvy-0-PC54RHthrRyNvyModelFront2/624Wx724H-7047-HthrRyNvy-0-PC54RHthrRyNvyModelFront2.jpg",
+    "swatch": "https://cdnp.sanmar.com/medias/sys_master/images/hff/h2d/30953800106014/50W_PC54_CherryBlossom_SP26_swatch/50W-PC54-CherryBlossom-SP26-swatch.gif"
+  },
+  {
+    "code": "CloverGrn",
+    "name": "Clover Green",
+    "flat": "https://cdnp.sanmar.com/medias/sys_master/images/h1f/hdb/30954624876574/624Wx724H_3985_CloverGrn-0-PC54CloverGrnModelFront3/624Wx724H-3985-CloverGrn-0-PC54CloverGrnModelFront3.jpg",
+    "swatch": "https://cdnp.sanmar.com/medias/sys_master/images/h41/hcb/28861725605918/50W_PC54_ATHLETICKELLY_swatch/50W-PC54-ATHLETICKELLY-swatch.gif"
+  },
+  {
+    "code": "CoalGrey",
+    "name": "Coal Grey",
+    "flat": "https://cdnp.sanmar.com/medias/sys_master/images/h6d/hf5/30951898644510/624Wx724H_3985_CoalGrey-12-PC54CoalGreyFlatFront1/624Wx724H-3985-CoalGrey-12-PC54CoalGreyFlatFront1.jpg",
+    "swatch": "https://cdnp.sanmar.com/medias/sys_master/images/h41/hcb/28861725605918/50W_PC54_ATHLETICKELLY_swatch/50W-PC54-ATHLETICKELLY-swatch.gif"
+  },
+  {
+    "code": "Coral",
+    "name": "Coral",
+    "flat": "https://cdnp.sanmar.com/medias/sys_master/images/hae/hf1/30951898775582/624Wx724H_3985_Coral-12-PC54CoralFlatFront1/624Wx724H-3985-Coral-12-PC54CoralFlatFront1.jpg",
+    "swatch": "https://cdnp.sanmar.com/medias/sys_master/images/h50/h5d/28861894688798/50W_PC54_Coral_swatch/50W-PC54-Coral-swatch.gif"
+  },
+  {
+    "code": "CoyoteBrn",
+    "name": "Coyote Brown",
+    "flat": "https://cdnp.sanmar.com/medias/sys_master/images/h16/h7f/30954625466398/624Wx724H_3985_CoyoteBrn-0-PC54CoyoteBrnModelFront7/624Wx724H-3985-CoyoteBrn-0-PC54CoyoteBrnModelFront7.jpg",
+    "swatch": "https://cdnp.sanmar.com/medias/sys_master/images/h41/hcb/28861725605918/50W_PC54_ATHLETICKELLY_swatch/50W-PC54-ATHLETICKELLY-swatch.gif"
+  },
+  {
+    "code": "Creme",
+    "name": "Creme",
+    "flat": "https://cdnp.sanmar.com/medias/sys_master/images/h75/h9c/30951899168798/624Wx724H_3985_Creme-12-PC54CremeFlatFront1/624Wx724H-3985-Creme-12-PC54CremeFlatFront1.jpg",
+    "swatch": "https://cdnp.sanmar.com/medias/sys_master/images/h42/h63/28874925473822/50W_PC54_CREME_swatch/50W-PC54-CREME-swatch.gif"
+  },
+  {
+    "code": "DkChocBrn",
+    "name": "Dark Chocolate Brown",
+    "flat": "https://cdnp.sanmar.com/medias/sys_master/images/h0c/h23/30954626056222/624Wx724H_3985_DkChocBrn-0-PC54DkChocBrnModelFront3/624Wx724H-3985-DkChocBrn-0-PC54DkChocBrnModelFront3.jpg",
+    "swatch": "https://cdnp.sanmar.com/medias/sys_master/images/h41/hcb/28861725605918/50W_PC54_ATHLETICKELLY_swatch/50W-PC54-ATHLETICKELLY-swatch.gif"
+  },
+  {
+    "code": "DarkGreen",
+    "name": "Dark Green",
+    "flat": "https://cdnp.sanmar.com/medias/sys_master/images/h88/h71/30954625859614/624Wx724H_3985_DarkGreen-0-PC54DarkGreenModelFront3/624Wx724H-3985-DarkGreen-0-PC54DarkGreenModelFront3.jpg",
+    "swatch": "https://cdnp.sanmar.com/medias/sys_master/images/h41/hcb/28861725605918/50W_PC54_ATHLETICKELLY_swatch/50W-PC54-ATHLETICKELLY-swatch.gif"
+  },
+  {
+    "code": "DkHtGry",
+    "name": "Dark Heather Grey",
+    "flat": "https://cdnp.sanmar.com/medias/sys_master/images/h3c/h1c/30954626252830/624Wx724H_3985_DkHtGry-0-PC54DkHtGryModelFront3/624Wx724H-3985-DkHtGry-0-PC54DkHtGryModelFront3.jpg",
+    "swatch": "https://cdnp.sanmar.com/medias/sys_master/images/h41/hcb/28861725605918/50W_PC54_ATHLETICKELLY_swatch/50W-PC54-ATHLETICKELLY-swatch.gif"
+  },
+  {
+    "code": "DuckBrown",
+    "name": "Duck Brown",
+    "flat": "https://cdnp.sanmar.com/medias/sys_master/images/h91/he0/30949717966878/624Wx724H_7047_HthrRyNvy-0-PC54RHthrRyNvyModelFront2/624Wx724H-7047-HthrRyNvy-0-PC54RHthrRyNvyModelFront2.jpg",
+    "swatch": "https://cdnp.sanmar.com/medias/sys_master/images/h97/h94/30953801023518/50W_PC54_DuckBrown_SP26_swatch/50W-PC54-DuckBrown-SP26-swatch.gif"
+  },
+  {
+    "code": "FlushPink",
+    "name": "Flush Pink",
+    "flat": "https://cdnp.sanmar.com/medias/sys_master/images/h58/h84/30951899889694/624Wx724H_3985_FlushPink-12-PC54FlushPinkFlatFront1/624Wx724H-3985-FlushPink-12-PC54FlushPinkFlatFront1.jpg",
+    "swatch": "https://cdnp.sanmar.com/medias/sys_master/images/h46/h01/28861895278622/50W_PC54_FlushPink_swatch/50W-PC54-FlushPink-swatch.gif"
+  },
+  {
+    "code": "Gold",
+    "name": "Gold",
+    "flat": "https://cdnp.sanmar.com/medias/sys_master/images/h14/hca/31621796364318/624Wx724H_6459_Gold-12-PC54PGoldFlatFront1/624Wx724H-6459-Gold-12-PC54PGoldFlatFront1.jpg",
+    "swatch": "https://cdnp.sanmar.com/medias/sys_master/images/h41/hcb/28861725605918/50W_PC54_ATHLETICKELLY_swatch/50W-PC54-ATHLETICKELLY-swatch.gif"
+  },
+  {
+    "code": "GphHeather",
+    "name": "Graphite Heather",
+    "flat": "https://cdnp.sanmar.com/medias/sys_master/images/hde/h07/30954626842654/624Wx724H_3985_GphHeather-0-PC54GphHeatherModelFront3/624Wx724H-3985-GphHeather-0-PC54GphHeatherModelFront3.jpg",
+    "swatch": "https://cdnp.sanmar.com/medias/sys_master/images/h41/hcb/28861725605918/50W_PC54_ATHLETICKELLY_swatch/50W-PC54-ATHLETICKELLY-swatch.gif"
+  },
+  {
+    "code": "HthrAthMar",
+    "name": "Heather Athletic Maroon",
+    "flat": "https://cdnp.sanmar.com/medias/sys_master/images/he8/h5a/30954627629086/624Wx724H_3985_HthrAthMar-0-PC54HthrAthMarModelFront3/624Wx724H-3985-HthrAthMar-0-PC54HthrAthMarModelFront3.jpg",
+    "swatch": "https://cdnp.sanmar.com/medias/sys_master/images/h41/hcb/28861725605918/50W_PC54_ATHLETICKELLY_swatch/50W-PC54-ATHLETICKELLY-swatch.gif"
+  },
+  {
+    "code": "HtDkChocBr",
+    "name": "Heather Dark Chocolate Brown",
+    "flat": "https://cdnp.sanmar.com/medias/sys_master/images/h8a/h46/30954627039262/624Wx724H_3985_HtDkChocBr-0-PC54HtDkChocBrModelFront3/624Wx724H-3985-HtDkChocBr-0-PC54HtDkChocBrModelFront3.jpg",
+    "swatch": "https://cdnp.sanmar.com/medias/sys_master/images/h41/hcb/28861725605918/50W_PC54_ATHLETICKELLY_swatch/50W-PC54-ATHLETICKELLY-swatch.gif"
+  },
+  {
+    "code": "HthrNavy",
+    "name": "Heather Navy",
+    "flat": "https://cdnp.sanmar.com/medias/sys_master/images/hb7/h61/30954627825694/624Wx724H_3985_HthrNavy-0-PC54HthrNavyModelFront3/624Wx724H-3985-HthrNavy-0-PC54HthrNavyModelFront3.jpg",
+    "swatch": "https://cdnp.sanmar.com/medias/sys_master/images/h41/hcb/28861725605918/50W_PC54_ATHLETICKELLY_swatch/50W-PC54-ATHLETICKELLY-swatch.gif"
+  },
+  {
+    "code": "HthrPurple",
+    "name": "Heather Purple",
+    "flat": "https://cdnp.sanmar.com/medias/sys_master/images/h34/hb0/30954628022302/624Wx724H_3985_HthrPurple-0-PC54HthrPurpleModelFront3/624Wx724H-3985-HthrPurple-0-PC54HthrPurpleModelFront3.jpg",
+    "swatch": "https://cdnp.sanmar.com/medias/sys_master/images/h41/hcb/28861725605918/50W_PC54_ATHLETICKELLY_swatch/50W-PC54-ATHLETICKELLY-swatch.gif"
+  },
+  {
+    "code": "HthrRed",
+    "name": "Heather Red",
+    "flat": "https://cdnp.sanmar.com/medias/sys_master/images/hf0/hb6/30954628218910/624Wx724H_3985_HthrRed-0-PC54HthrRedModelFront3/624Wx724H-3985-HthrRed-0-PC54HthrRedModelFront3.jpg",
+    "swatch": "https://cdnp.sanmar.com/medias/sys_master/images/h41/hcb/28861725605918/50W_PC54_ATHLETICKELLY_swatch/50W-PC54-ATHLETICKELLY-swatch.gif"
+  },
+  {
+    "code": "HthrRoyal",
+    "name": "Heather Royal",
+    "flat": "https://cdnp.sanmar.com/medias/sys_master/images/hc1/hbd/30954628415518/624Wx724H_3985_HthrRoyal-0-PC54HthrRoyalModelFront3/624Wx724H-3985-HthrRoyal-0-PC54HthrRoyalModelFront3.jpg",
+    "swatch": "https://cdnp.sanmar.com/medias/sys_master/images/h41/hcb/28861725605918/50W_PC54_ATHLETICKELLY_swatch/50W-PC54-ATHLETICKELLY-swatch.gif"
+  },
+  {
+    "code": "HtSangria",
+    "name": "Heather Sangria",
+    "flat": "https://cdnp.sanmar.com/medias/sys_master/images/h5a/h4d/30954627235870/624Wx724H_3985_HtSangria-0-PC54HtSangriaModelFront3/624Wx724H-3985-HtSangria-0-PC54HtSangriaModelFront3.jpg",
+    "swatch": "https://cdnp.sanmar.com/medias/sys_master/images/h41/hcb/28861725605918/50W_PC54_ATHLETICKELLY_swatch/50W-PC54-ATHLETICKELLY-swatch.gif"
+  },
+  {
+    "code": "HtdDstyPch",
+    "name": "Heathered Dusty Peach",
+    "flat": "https://cdnp.sanmar.com/medias/sys_master/images/h86/h6c/30951900545054/624Wx724H_3985_HtdDstyPch-12-PC54HtdDstyPchFlatFront1/624Wx724H-3985-HtdDstyPch-12-PC54HtdDstyPchFlatFront1.jpg",
+    "swatch": "https://cdnp.sanmar.com/medias/sys_master/images/h12/h6a/28874925670430/50W_PC54_HEATHEREDDUSTYPEACH_swatch/50W-PC54-HEATHEREDDUSTYPEACH-swatch.gif"
+  },
+  {
+    "code": "Ivory",
+    "name": "Ivory",
+    "flat": "https://cdnp.sanmar.com/medias/sys_master/images/h91/he0/30949717966878/624Wx724H_7047_HthrRyNvy-0-PC54RHthrRyNvyModelFront2/624Wx724H-7047-HthrRyNvy-0-PC54RHthrRyNvyModelFront2.jpg",
+    "swatch": "https://cdnp.sanmar.com/medias/sys_master/images/h78/h97/30953803055134/50W_PC54_Ivory_SP26_swatch/50W-PC54-Ivory-SP26-swatch.gif"
+  },
+  {
+    "code": "JadeGreen",
+    "name": "Jade Green",
+    "flat": "https://cdnp.sanmar.com/medias/sys_master/images/h91/he0/30949717966878/624Wx724H_7047_HthrRyNvy-0-PC54RHthrRyNvyModelFront2/624Wx724H-7047-HthrRyNvy-0-PC54RHthrRyNvyModelFront2.jpg",
+    "swatch": "https://cdnp.sanmar.com/medias/sys_master/images/hb9/h93/30953803186206/50W_PC54_JadeGreen_SP26_swatch/50W-PC54-JadeGreen-SP26-swatch.gif"
+  },
+  {
+    "code": "Jadeite",
+    "name": "Jadeite",
+    "flat": "https://cdnp.sanmar.com/medias/sys_master/images/hbe/h0c/30951901265950/624Wx724H_3985_Jadeite-12-PC54JadeiteFlatFront1/624Wx724H-3985-Jadeite-12-PC54JadeiteFlatFront1.jpg",
+    "swatch": "https://cdnp.sanmar.com/medias/sys_master/images/h4a/hc2/28874926129182/50W_PC54_JADEITE_swatch/50W-PC54-JADEITE-swatch.gif"
+  },
+  {
+    "code": "JetBlack",
+    "name": "Jet Black",
+    "flat": "https://cdnp.sanmar.com/medias/sys_master/images/h4e/hcb/30954628808734/624Wx724H_3985_JetBlack-0-PC54JetBlackModelFront3/624Wx724H-3985-JetBlack-0-PC54JetBlackModelFront3.jpg",
+    "swatch": "https://cdnp.sanmar.com/medias/sys_master/images/h41/hcb/28861725605918/50W_PC54_ATHLETICKELLY_swatch/50W-PC54-ATHLETICKELLY-swatch.gif"
+  },
+  {
+    "code": "Kelly",
+    "name": "Kelly",
+    "flat": "https://cdnp.sanmar.com/medias/sys_master/images/h35/he6/30954629005342/624Wx724H_3985_Kelly-0-PC54KellyModelFront3/624Wx724H-3985-Kelly-0-PC54KellyModelFront3.jpg",
+    "swatch": "https://cdnp.sanmar.com/medias/sys_master/images/h41/hcb/28861725605918/50W_PC54_ATHLETICKELLY_swatch/50W-PC54-ATHLETICKELLY-swatch.gif"
+  },
+  {
+    "code": "LaurelGrn",
+    "name": "Laurel Green",
+    "flat": "https://cdnp.sanmar.com/medias/sys_master/images/h9f/h07/30951901855774/624Wx724H_3985_LaurelGrn-12-PC54LaurelGrnFlatFront1/624Wx724H-3985-LaurelGrn-12-PC54LaurelGrnFlatFront1.jpg",
+    "swatch": "https://cdnp.sanmar.com/medias/sys_master/images/hc2/hc3/28861725868062/50W_PC54_LAURELGREEN_swatch/50W-PC54-LAURELGREEN-swatch.gif"
+  },
+  {
+    "code": "Lavender",
+    "name": "Lavender",
+    "flat": "https://cdnp.sanmar.com/medias/sys_master/images/h5e/h0b/30951901986846/624Wx724H_3985_Lavender-12-PC54LavenderFlatFront1/624Wx724H-3985-Lavender-12-PC54LavenderFlatFront1.jpg",
+    "swatch": "https://cdnp.sanmar.com/medias/sys_master/images/hb1/hc0/28861725933598/50W_PC54_LAVENDER_swatch/50W-PC54-LAVENDER-swatch.gif"
+  },
+  {
+    "code": "LemonYllw",
+    "name": "Lemon Yellow",
+    "flat": "https://cdnp.sanmar.com/medias/sys_master/images/h1b/h56/30951902052382/624Wx724H_3985_LemonYllw-12-PC54LemonYllwFlatFront1/624Wx724H-3985-LemonYllw-12-PC54LemonYllwFlatFront1.jpg",
+    "swatch": "https://cdnp.sanmar.com/medias/sys_master/images/h03/hc0/28861725999134/50W_PC54_LEMONYELLOW_swatch/50W-PC54-LEMONYELLOW-swatch.gif"
+  },
+  {
+    "code": "LightBlue",
+    "name": "Light Blue",
+    "flat": "https://cdnp.sanmar.com/medias/sys_master/images/h99/hc6/30954629988382/624Wx724H_3985_LightBlue-0-PC54LightBlueModelFront3/624Wx724H-3985-LightBlue-0-PC54LightBlueModelFront3.jpg",
+    "swatch": "https://cdnp.sanmar.com/medias/sys_master/images/h41/hcb/28861725605918/50W_PC54_ATHLETICKELLY_swatch/50W-PC54-ATHLETICKELLY-swatch.gif"
+  },
+  {
+    "code": "LightSand",
+    "name": "Light Sand",
+    "flat": "https://cdnp.sanmar.com/medias/sys_master/images/h91/he0/30949717966878/624Wx724H_7047_HthrRyNvy-0-PC54RHthrRyNvyModelFront2/624Wx724H-7047-HthrRyNvy-0-PC54RHthrRyNvyModelFront2.jpg",
+    "swatch": "https://cdnp.sanmar.com/medias/sys_master/images/he2/h2d/30953804038174/50W_PC54_LightSand_SP26_swatch/50W-PC54-LightSand-SP26-swatch.gif"
+  },
+  {
+    "code": "LIME",
+    "name": "Lime",
+    "flat": "https://cdnp.sanmar.com/medias/sys_master/images/h65/hdf/30954629201950/624Wx724H_3985_LIME-0-PC54LIMEModelFront3/624Wx724H-3985-LIME-0-PC54LIMEModelFront3.jpg",
+    "swatch": "https://cdnp.sanmar.com/medias/sys_master/images/h41/hcb/28861725605918/50W_PC54_ATHLETICKELLY_swatch/50W-PC54-ATHLETICKELLY-swatch.gif"
+  },
+  {
+    "code": "MediumGrey",
+    "name": "Medium Grey",
+    "flat": "https://cdnp.sanmar.com/medias/sys_master/images/ha7/h35/30954630184990/624Wx724H_3985_MediumGrey-0-PC54MediumGreyModelFront3/624Wx724H-3985-MediumGrey-0-PC54MediumGreyModelFront3.jpg",
+    "swatch": "https://cdnp.sanmar.com/medias/sys_master/images/h41/hcb/28861725605918/50W_PC54_ATHLETICKELLY_swatch/50W-PC54-ATHLETICKELLY-swatch.gif"
+  },
+  {
+    "code": "Natural",
+    "name": "Natural",
+    "flat": "https://cdnp.sanmar.com/medias/sys_master/images/h78/h3c/30954630381598/624Wx724H_3985_Natural-0-PC54NaturalModelFront3/624Wx724H-3985-Natural-0-PC54NaturalModelFront3.jpg",
+    "swatch": "https://cdnp.sanmar.com/medias/sys_master/images/h41/hcb/28861725605918/50W_PC54_ATHLETICKELLY_swatch/50W-PC54-ATHLETICKELLY-swatch.gif"
+  },
+  {
+    "code": "Navy",
+    "name": "Navy",
+    "flat": "https://cdnp.sanmar.com/medias/sys_master/images/h35/h43/30954630578206/624Wx724H_3985_Navy-0-PC54NavyModelFront3/624Wx724H-3985-Navy-0-PC54NavyModelFront3.jpg",
+    "swatch": "https://cdnp.sanmar.com/medias/sys_master/images/h41/hcb/28861725605918/50W_PC54_ATHLETICKELLY_swatch/50W-PC54-ATHLETICKELLY-swatch.gif"
+  },
+  {
+    "code": "NeonBlue",
+    "name": "Neon Blue",
+    "flat": "https://cdnp.sanmar.com/medias/sys_master/images/hae/h49/30954630742046/624Wx724H_3985_NeonBlue-0-PC54NeonBlueModelFront3/624Wx724H-3985-NeonBlue-0-PC54NeonBlueModelFront3.jpg",
+    "swatch": "https://cdnp.sanmar.com/medias/sys_master/images/h41/hcb/28861725605918/50W_PC54_ATHLETICKELLY_swatch/50W-PC54-ATHLETICKELLY-swatch.gif"
+  },
+  {
+    "code": "NeonGreen",
+    "name": "Neon Green",
+    "flat": "https://cdnp.sanmar.com/medias/sys_master/images/hd5/h50/30954630971422/624Wx724H_3985_NeonGreen-0-PC54NeonGreenModelFront3/624Wx724H-3985-NeonGreen-0-PC54NeonGreenModelFront3.jpg",
+    "swatch": "https://cdnp.sanmar.com/medias/sys_master/images/h41/hcb/28861725605918/50W_PC54_ATHLETICKELLY_swatch/50W-PC54-ATHLETICKELLY-swatch.gif"
+  },
+  {
+    "code": "NeonOrange",
+    "name": "Neon Orange",
+    "flat": "https://cdnp.sanmar.com/medias/sys_master/images/h3e/h9f/30954631168030/624Wx724H_3985_NeonOrange-0-PC54NeonOrangeModelFront3/624Wx724H-3985-NeonOrange-0-PC54NeonOrangeModelFront3.jpg",
+    "swatch": "https://cdnp.sanmar.com/medias/sys_master/images/h41/hcb/28861725605918/50W_PC54_ATHLETICKELLY_swatch/50W-PC54-ATHLETICKELLY-swatch.gif"
+  },
+  {
+    "code": "NeonPink",
+    "name": "Neon Pink",
+    "flat": "https://cdnp.sanmar.com/medias/sys_master/images/h0e/ha6/30954631364638/624Wx724H_3985_NeonPink-0-PC54NeonPinkModelFront3/624Wx724H-3985-NeonPink-0-PC54NeonPinkModelFront3.jpg",
+    "swatch": "https://cdnp.sanmar.com/medias/sys_master/images/h41/hcb/28861725605918/50W_PC54_ATHLETICKELLY_swatch/50W-PC54-ATHLETICKELLY-swatch.gif"
+  },
+  {
+    "code": "NeonYellow",
+    "name": "Neon Yellow",
+    "flat": "https://cdnp.sanmar.com/medias/sys_master/images/hdf/hac/30954631561246/624Wx724H_3985_NeonYellow-0-PC54NeonYellowModelFront3/624Wx724H-3985-NeonYellow-0-PC54NeonYellowModelFront3.jpg",
+    "swatch": "https://cdnp.sanmar.com/medias/sys_master/images/h41/hcb/28861725605918/50W_PC54_ATHLETICKELLY_swatch/50W-PC54-ATHLETICKELLY-swatch.gif"
+  },
+  {
+    "code": "NeptuneBl",
+    "name": "Neptune Blue",
+    "flat": "https://cdnp.sanmar.com/medias/sys_master/images/h41/hca/30951903363102/624Wx724H_3985_NeptuneBl-12-PC54NeptuneBlFlatFront1/624Wx724H-3985-NeptuneBl-12-PC54NeptuneBlFlatFront1.jpg",
+    "swatch": "https://cdnp.sanmar.com/medias/sys_master/images/h78/h6b/28861726326814/50W_PC54_NEPTUNEBLUE_swatch/50W-PC54-NEPTUNEBLUE-swatch.gif"
+  },
+  {
+    "code": "OatHthr",
+    "name": "Oatmeal Heather",
+    "flat": "https://cdnp.sanmar.com/medias/sys_master/images/hfe/hd0/30951903559710/624Wx724H_3985_OatHthr-12-PC54OatHthrFlatFront1/624Wx724H-3985-OatHthr-12-PC54OatHthrFlatFront1.jpg",
+    "swatch": "https://cdnp.sanmar.com/medias/sys_master/images/hdb/hc9/28874926391326/50W_PC54_OATMEALHEATHER_swatch/50W-PC54-OATMEALHEATHER-swatch.gif"
+  },
+  {
+    "code": "Olive",
+    "name": "Olive",
+    "flat": "https://cdnp.sanmar.com/medias/sys_master/images/h17/hf7/30954632151070/624Wx724H_3985_Olive-0-PC54OliveModelFront3/624Wx724H-3985-Olive-0-PC54OliveModelFront3.jpg",
+    "swatch": "https://cdnp.sanmar.com/medias/sys_master/images/h41/hcb/28861725605918/50W_PC54_ATHLETICKELLY_swatch/50W-PC54-ATHLETICKELLY-swatch.gif"
+  },
+  {
+    "code": "OlvDrabGn",
+    "name": "Olive Drab Green",
+    "flat": "https://cdnp.sanmar.com/medias/sys_master/images/h8c/he6/30954632609822/624Wx724H_3985_OlvDrabGn-0-PC54OlvDrabGnModelFront3/624Wx724H-3985-OlvDrabGn-0-PC54OlvDrabGnModelFront3.jpg",
+    "swatch": "https://cdnp.sanmar.com/medias/sys_master/images/h41/hcb/28861725605918/50W_PC54_ATHLETICKELLY_swatch/50W-PC54-ATHLETICKELLY-swatch.gif"
+  },
+  {
+    "code": "OlvDrabGnH",
+    "name": "Olive Drab Green Heather",
+    "flat": "https://cdnp.sanmar.com/medias/sys_master/images/h8e/hdb/30951903887390/624Wx724H_3985_OlvDrabGnH-12-PC54OlvDrabGnHFlatFront1/624Wx724H-3985-OlvDrabGnH-12-PC54OlvDrabGnHFlatFront1.jpg",
+    "swatch": "https://cdnp.sanmar.com/medias/sys_master/images/h76/h6e/28861726261278/50W_PC54_OLIVEDRABGREENHEATHER_swatch/50W-PC54-OLIVEDRABGREENHEATHER-swatch.gif"
+  },
+  {
+    "code": "Orange",
+    "name": "Orange",
+    "flat": "https://cdnp.sanmar.com/medias/sys_master/images/he8/h90/30954633035806/624Wx724H_3985_Orange-0-PC54OrangeModelFront3/624Wx724H-3985-Orange-0-PC54OrangeModelFront3.jpg",
+    "swatch": "https://cdnp.sanmar.com/medias/sys_master/images/h41/hcb/28861725605918/50W_PC54_ATHLETICKELLY_swatch/50W-PC54-ATHLETICKELLY-swatch.gif"
+  },
+  {
+    "code": "PaleBlush",
+    "name": "Pale Blush",
+    "flat": "https://cdnp.sanmar.com/medias/sys_master/images/he6/hcf/30951904215070/624Wx724H_3985_PaleBlush-12-PC54PaleBlushFlatFront1/624Wx724H-3985-PaleBlush-12-PC54PaleBlushFlatFront1.jpg",
+    "swatch": "https://cdnp.sanmar.com/medias/sys_master/images/hb7/h6a/28861726392350/50W_PC54_PALEBLUSH_swatch/50W-PC54-PALEBLUSH-swatch.gif"
+  },
+  {
+    "code": "Purple",
+    "name": "Purple",
+    "flat": "https://cdnp.sanmar.com/medias/sys_master/images/h01/h86/30954633396254/624Wx724H_3985_Purple-0-PC54PurpleModelFront3/624Wx724H-3985-Purple-0-PC54PurpleModelFront3.jpg",
+    "swatch": "https://cdnp.sanmar.com/medias/sys_master/images/h41/hcb/28861725605918/50W_PC54_ATHLETICKELLY_swatch/50W-PC54-ATHLETICKELLY-swatch.gif"
+  },
+  {
+    "code": "Red",
+    "name": "Red",
+    "flat": "https://cdnp.sanmar.com/medias/sys_master/images/h31/h7f/30954633592862/624Wx724H_3985_Red-0-PC54RedModelFront3/624Wx724H-3985-Red-0-PC54RedModelFront3.jpg",
+    "swatch": "https://cdnp.sanmar.com/medias/sys_master/images/h41/hcb/28861725605918/50W_PC54_ATHLETICKELLY_swatch/50W-PC54-ATHLETICKELLY-swatch.gif"
+  },
+  {
+    "code": "Royal",
+    "name": "Royal",
+    "flat": "https://cdnp.sanmar.com/medias/sys_master/images/h74/h78/30954633789470/624Wx724H_3985_Royal-0-PC54RoyalModelFront2/624Wx724H-3985-Royal-0-PC54RoyalModelFront2.jpg",
+    "swatch": "https://cdnp.sanmar.com/medias/sys_master/images/h41/hcb/28861725605918/50W_PC54_ATHLETICKELLY_swatch/50W-PC54-ATHLETICKELLY-swatch.gif"
+  },
+  {
+    "code": "SGreen",
+    "name": "S. Green",
+    "flat": "https://cdnp.sanmar.com/medias/sys_master/images/h9a/hbe/30951904739358/624Wx724H_3985_SGreen-12-PC54SGreenFlatFront1/624Wx724H-3985-SGreen-12-PC54SGreenFlatFront1.jpg",
+    "swatch": "https://cdnp.sanmar.com/medias/sys_master/images/hfa/h63/28861726588958/50W_PC54_SGREEN_swatch/50W-PC54-SGREEN-swatch.gif"
+  },
+  {
+    "code": "SOrange",
+    "name": "S. Orange",
+    "flat": "https://cdnp.sanmar.com/medias/sys_master/images/h89/hbb/30951904804894/624Wx724H_3985_SOrange-12-PC54SOrangeFlatFront1/624Wx724H-3985-SOrange-12-PC54SOrangeFlatFront1.jpg",
+    "swatch": "https://cdnp.sanmar.com/medias/sys_master/images/hd9/hcc/28874926456862/50W_PC54_SORANGE_swatch/50W-PC54-SORANGE-swatch.gif"
+  },
+  {
+    "code": "Sand",
+    "name": "Sand",
+    "flat": "https://cdnp.sanmar.com/medias/sys_master/images/h6b/h1c/30954634379294/624Wx724H_3985_Sand-0-PC54SandModelFront3/624Wx724H-3985-Sand-0-PC54SandModelFront3.jpg",
+    "swatch": "https://cdnp.sanmar.com/medias/sys_master/images/h41/hcb/28861725605918/50W_PC54_ATHLETICKELLY_swatch/50W-PC54-ATHLETICKELLY-swatch.gif"
+  },
+  {
+    "code": "Sangria",
+    "name": "Sangria",
+    "flat": "https://cdnp.sanmar.com/medias/sys_master/images/hf4/h12/30954634608670/624Wx724H_3985_Sangria-0-PC54SangriaModelFront3/624Wx724H-3985-Sangria-0-PC54SangriaModelFront3.jpg",
+    "swatch": "https://cdnp.sanmar.com/medias/sys_master/images/h41/hcb/28861725605918/50W_PC54_ATHLETICKELLY_swatch/50W-PC54-ATHLETICKELLY-swatch.gif"
+  },
+  {
+    "code": "Sapphire",
+    "name": "Sapphire",
+    "flat": "https://cdnp.sanmar.com/medias/sys_master/images/hca/h0e/30954634772510/624Wx724H_3985_Sapphire-0-PC54SapphireModelFront3/624Wx724H-3985-Sapphire-0-PC54SapphireModelFront3.jpg",
+    "swatch": "https://cdnp.sanmar.com/medias/sys_master/images/h41/hcb/28861725605918/50W_PC54_ATHLETICKELLY_swatch/50W-PC54-ATHLETICKELLY-swatch.gif"
+  },
+  {
+    "code": "Silver",
+    "name": "Silver",
+    "flat": "https://cdnp.sanmar.com/medias/sys_master/images/h64/h08/30954634936350/624Wx724H_3985_Silver-0-PC54SilverModelFront3/624Wx724H-3985-Silver-0-PC54SilverModelFront3.jpg",
+    "swatch": "https://cdnp.sanmar.com/medias/sys_master/images/h41/hcb/28861725605918/50W_PC54_ATHLETICKELLY_swatch/50W-PC54-ATHLETICKELLY-swatch.gif"
+  },
+  {
+    "code": "SteelBlue",
+    "name": "Steel Blue",
+    "flat": "https://cdnp.sanmar.com/medias/sys_master/images/h6e/h46/30954635165726/624Wx724H_3985_SteelBlue-0-PC54SteelBlueModelFront4/624Wx724H-3985-SteelBlue-0-PC54SteelBlueModelFront4.jpg",
+    "swatch": "https://cdnp.sanmar.com/medias/sys_master/images/h41/hcb/28861725605918/50W_PC54_ATHLETICKELLY_swatch/50W-PC54-ATHLETICKELLY-swatch.gif"
+  },
+  {
+    "code": "StnwshdBl",
+    "name": "Stonewashed Blue",
+    "flat": "https://cdnp.sanmar.com/medias/sys_master/images/h3e/h4d/30954635362334/624Wx724H_3985_StnwshdBl-0-PC54StnwshdBlModelFront3/624Wx724H-3985-StnwshdBl-0-PC54StnwshdBlModelFront3.jpg",
+    "swatch": "https://cdnp.sanmar.com/medias/sys_master/images/h98/hd0/28874926587934/50W_PC54_STONEWASHEDBLUE_swatch/50W-PC54-STONEWASHEDBLUE-swatch.gif"
+  },
+  {
+    "code": "Teal",
+    "name": "Teal",
+    "flat": "https://cdnp.sanmar.com/medias/sys_master/images/hfb/h53/30954635558942/624Wx724H_3985_Teal-0-PC54TealModelFront3/624Wx724H-3985-Teal-0-PC54TealModelFront3.jpg",
+    "swatch": "https://cdnp.sanmar.com/medias/sys_master/images/h41/hcb/28861725605918/50W_PC54_ATHLETICKELLY_swatch/50W-PC54-ATHLETICKELLY-swatch.gif"
+  },
+  {
+    "code": "TeamPurple",
+    "name": "Team Purple",
+    "flat": "https://cdnp.sanmar.com/medias/sys_master/images/hcc/h5a/30954635755550/624Wx724H_3985_TeamPurple-0-PC54TeamPurpleModelFront3/624Wx724H-3985-TeamPurple-0-PC54TeamPurpleModelFront3.jpg",
+    "swatch": "https://cdnp.sanmar.com/medias/sys_master/images/h41/hcb/28861725605918/50W_PC54_ATHLETICKELLY_swatch/50W-PC54-ATHLETICKELLY-swatch.gif"
+  },
+  {
+    "code": "TennOrange",
+    "name": "Tennessee Orange",
+    "flat": "https://cdnp.sanmar.com/medias/sys_master/images/hb4/h02/30951906050078/624Wx724H_3985_TennOrange-12-PC54TennOrangeFlatFront1/624Wx724H-3985-TennOrange-12-PC54TennOrangeFlatFront1.jpg",
+    "swatch": "https://cdnp.sanmar.com/medias/sys_master/images/h41/h57/28861894819870/50W_PC54_TennesseeOrange_swatch/50W-PC54-TennesseeOrange-swatch.gif"
+  },
+  {
+    "code": "TidalWave",
+    "name": "Tidal Wave",
+    "flat": "https://cdnp.sanmar.com/medias/sys_master/images/h91/he0/30949717966878/624Wx724H_7047_HthrRyNvy-0-PC54RHthrRyNvyModelFront2/624Wx724H-7047-HthrRyNvy-0-PC54RHthrRyNvyModelFront2.jpg",
+    "swatch": "https://cdnp.sanmar.com/medias/sys_master/images/h4a/h83/30953808134174/50W_PC54_TidalWave_SP26_swatch/50W-PC54-TidalWave-SP26-swatch.gif"
+  },
+  {
+    "code": "TrCeladon",
+    "name": "True Celadon",
+    "flat": "https://cdnp.sanmar.com/medias/sys_master/images/h0a/h01/30951906181150/624Wx724H_3985_TrCeladon-12-PC54TrCeladonFlatFront1/624Wx724H-3985-TrCeladon-12-PC54TrCeladonFlatFront1.jpg",
+    "swatch": "https://cdnp.sanmar.com/medias/sys_master/images/h7a/hda/28874926850078/50W_PC54_TRUECELADON_swatch/50W-PC54-TRUECELADON-swatch.gif"
+  },
+  {
+    "code": "TrueNavy",
+    "name": "True Navy",
+    "flat": "https://cdnp.sanmar.com/medias/sys_master/images/h19/h07/30951906312222/624Wx724H_3985_TrueNavy-12-PC54TrueNavyFlatFront1/624Wx724H-3985-TrueNavy-12-PC54TrueNavyFlatFront1.jpg",
+    "swatch": "https://cdnp.sanmar.com/medias/sys_master/images/hd7/h5d/28861726720030/50W_PC54_TRUENAVY_swatch/50W-PC54-TRUENAVY-swatch.gif"
+  },
+  {
+    "code": "TrueRoyal",
+    "name": "True Royal",
+    "flat": "https://cdnp.sanmar.com/medias/sys_master/images/ha5/hbd/30954636541982/624Wx724H_3985_TrueRoyal-0-PC54TrueRoyalModelFront3/624Wx724H-3985-TrueRoyal-0-PC54TrueRoyalModelFront3.jpg",
+    "swatch": "https://cdnp.sanmar.com/medias/sys_master/images/h41/hcb/28861725605918/50W_PC54_ATHLETICKELLY_swatch/50W-PC54-ATHLETICKELLY-swatch.gif"
+  },
+  {
+    "code": "TundraBlu",
+    "name": "Tundra Blue",
+    "flat": "https://cdnp.sanmar.com/medias/sys_master/images/h97/h0e/30951906574366/624Wx724H_3985_TundraBlu-12-PC54TundraBluFlatFront1/624Wx724H-3985-TundraBlu-12-PC54TundraBluFlatFront1.jpg",
+    "swatch": "https://cdnp.sanmar.com/medias/sys_master/images/h1a/h57/28861726916638/50W_PC54_TUNDRABLUE_swatch/50W-PC54-TUNDRABLUE-swatch.gif"
+  },
+  {
+    "code": "Violet",
+    "name": "Violet",
+    "flat": "https://cdnp.sanmar.com/medias/sys_master/images/h91/he0/30949717966878/624Wx724H_7047_HthrRyNvy-0-PC54RHthrRyNvyModelFront2/624Wx724H-7047-HthrRyNvy-0-PC54RHthrRyNvyModelFront2.jpg",
+    "swatch": "https://cdnp.sanmar.com/medias/sys_master/images/h52/h75/30953808560158/50W_PC54_Violet_SP26_swatch/50W-PC54-Violet-SP26-swatch.gif"
+  },
+  {
+    "code": "White",
+    "name": "White",
+    "flat": "https://cdnp.sanmar.com/medias/sys_master/images/h33/hcb/30954636935198/624Wx724H_3985_White-0-PC54WhiteModelFront3/624Wx724H-3985-White-0-PC54WhiteModelFront3.jpg",
+    "swatch": "https://cdnp.sanmar.com/medias/sys_master/images/h41/hcb/28861725605918/50W_PC54_ATHLETICKELLY_swatch/50W-PC54-ATHLETICKELLY-swatch.gif"
+  },
+  {
+    "code": "WoodlandBr",
+    "name": "Woodland Brown",
+    "flat": "https://cdnp.sanmar.com/medias/sys_master/images/h50/he6/30954637131806/624Wx724H_3985_WoodlandBr-0-PC54WoodlandBrModelFront3/624Wx724H-3985-WoodlandBr-0-PC54WoodlandBrModelFront3.jpg",
+    "swatch": "https://cdnp.sanmar.com/medias/sys_master/images/h41/hcb/28861725605918/50W_PC54_ATHLETICKELLY_swatch/50W-PC54-ATHLETICKELLY-swatch.gif"
+  },
+  {
+    "code": "Yellow",
+    "name": "Yellow",
+    "flat": "https://cdnp.sanmar.com/medias/sys_master/images/h93/hdf/30954637328414/624Wx724H_3985_Yellow-0-PC54YellowModelFront3/624Wx724H-3985-Yellow-0-PC54YellowModelFront3.jpg",
+    "swatch": "https://cdnp.sanmar.com/medias/sys_master/images/h41/hcb/28861725605918/50W_PC54_ATHLETICKELLY_swatch/50W-PC54-ATHLETICKELLY-swatch.gif"
+  },
+  {
+    "code": "Zinnia",
+    "name": "Zinnia",
+    "flat": "https://cdnp.sanmar.com/medias/sys_master/images/h49/h6a/30951907131422/624Wx724H_3985_Zinnia-12-PC54ZinniaFlatFront1/624Wx724H-3985-Zinnia-12-PC54ZinniaFlatFront1.jpg",
+    "swatch": "https://cdnp.sanmar.com/medias/sys_master/images/ha9/hd3/28874926653470/50W_PC54_ZINNIA_swatch/50W-PC54-ZINNIA-swatch.gif"
+  }
+]
