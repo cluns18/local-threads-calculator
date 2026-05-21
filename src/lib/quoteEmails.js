@@ -8,26 +8,25 @@ import SHOP_CONFIG from '../config/shop.js';
 // Color + font tokens mirror src/App.css (the calc's own design system) so
 // emails feel like a native extension of the brand rather than a separate
 // template.
-const ACCENT = SHOP_CONFIG.accent_color;       // #B85A36, reserved for buttons
-const ACCENT_SOFT = SHOP_CONFIG.price_color;   // #D67E4E, readable on black for text/numbers
-const BG = SHOP_CONFIG.bg_color;               // #0a0a0a
-const CARD = SHOP_CONFIG.card_color;           // #141414
-const TEXT = SHOP_CONFIG.text_color;           // #f0ede4 (warm cream)
-const TEXT_MUTED = '#bfbcb3';                  // ~75% of TEXT on CARD
-const TEXT_DIM = '#8c8a84';                    // labels / metadata
-const SUBTLE_LINE = 'rgba(255,255,255,0.08)';  // matches calc card border
-const CARD_RADIUS = '12px';                    // matches .slide-page
-const BTN_RADIUS = '8px';                      // matches .btnColor
-// White-on-transparent logo for dark email backgrounds. Hosted on Blink's
-// Shopify CDN so it's reachable from any email client, not gated on Vercel
-// deploy state.
-const LOGO_URL = 'https://cdn.shopify.com/s/files/1/0628/7186/3395/files/local-threads-logo-white.png?v=1779226019';
+const ACCENT = SHOP_CONFIG.accent_color;       // #B85A36 LT clay, reserved for buttons + accents
+const ACCENT_SOFT = SHOP_CONFIG.price_color;   // #D67E4E lighter clay, readable on dark for text/numbers
+const BG = SHOP_CONFIG.bg_color;               // #14110E LT charcoal
+const CARD = SHOP_CONFIG.card_color;           // #1F1B16 LT surface
+const TEXT = SHOP_CONFIG.text_color;           // #F2EBDF LT cream
+const TEXT_MUTED = '#C8BFAE';                  // solid muted, matches v6 cream-muted
+const TEXT_DIM = '#9B9588';                    // dim labels / metadata
+const SUBTLE_LINE = 'rgba(242,235,223,0.08)';  // matches v6 border tokens
+const HIGHLIGHT_BG = 'rgba(184,90,54,0.12)';   // clay tint for highlight boxes
+const HIGHLIGHT_BORDER = 'rgba(184,90,54,0.32)'; // clay tint for highlight borders
+const CARD_RADIUS = '10px';
+const BTN_RADIUS = '999px';                    // pill buttons per v6 frontend-design
 // Email clients strip <link> tags and most ignore web fonts entirely. We
-// still request DM Sans / DM Sans in <head> for clients that respect them
-// (Apple Mail), and fall back to a clean modern system stack everywhere
-// else (Gmail Web, Outlook) so it never lands on plain Arial.
-const HEADING_FONT = "'DM Sans', 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Helvetica Neue', Helvetica, sans-serif";
-const BODY_FONT = "'DM Sans', 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Helvetica Neue', Helvetica, sans-serif";
+// still request Playfair Display + DM Sans in <head> for clients that respect
+// them (Apple Mail), and fall back to system serif/sans stacks elsewhere
+// (Gmail Web, Outlook) so it never lands on plain Times or Arial.
+const HEADING_FONT = "'Playfair Display', Georgia, 'Times New Roman', serif";
+const BODY_FONT = "'DM Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Helvetica Neue', Helvetica, sans-serif";
+const LABEL_FONT = BODY_FONT;
 
 const escapeHtml = (s) =>
     String(s ?? '')
@@ -40,12 +39,12 @@ const escapeHtml = (s) =>
 const formatMoney = (n) => `$${Number(n).toFixed(2)}`;
 
 const sectionLabel = (text) =>
-    `<p style="font-family:${HEADING_FONT}; font-size:11px; letter-spacing:0.16em; text-transform:uppercase; color:${TEXT_MUTED}; margin:0 0 12px; font-weight:700;">${escapeHtml(text)}</p>`;
+    `<p style="font-family:${LABEL_FONT}; font-size:11px; letter-spacing:0.20em; text-transform:uppercase; color:${ACCENT_SOFT}; margin:0 0 14px; font-weight:700;">${escapeHtml(text)}</p>`;
 
 const fieldRow = (label, value) => `
     <tr>
-        <td style="padding:9px 0; font-family:${BODY_FONT}; font-size:12px; color:${TEXT_DIM}; width:38%; vertical-align:top; font-weight:500; text-transform:uppercase; letter-spacing:0.06em;">${escapeHtml(label)}</td>
-        <td style="padding:9px 0; font-family:${BODY_FONT}; font-size:15px; color:${TEXT}; font-weight:600; vertical-align:top;">${value}</td>
+        <td style="padding:10px 0; font-family:${LABEL_FONT}; font-size:11px; color:${TEXT_MUTED}; width:38%; vertical-align:top; font-weight:600; text-transform:uppercase; letter-spacing:0.14em;">${escapeHtml(label)}</td>
+        <td style="padding:10px 0; font-family:${BODY_FONT}; font-size:15px; color:${TEXT}; font-weight:500; vertical-align:top;">${value}</td>
     </tr>
 `;
 
@@ -60,20 +59,20 @@ const emailShell = (innerHTML, preheader = '') => `
 <html lang="en"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Local Threads</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=DM Sans:wght@400;500;600;700;800&family=DM+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=DM+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
 </head>
 <body style="margin:0; padding:0; background:${BG}; -webkit-text-size-adjust:100%;">
 <div style="display:none; max-height:0; overflow:hidden; opacity:0; color:transparent;">${escapeHtml(preheader)}</div>
 <table width="100%" cellpadding="0" cellspacing="0" role="presentation" style="background:${BG}; padding:36px 16px;">
     <tr><td align="center">
         <table width="620" cellpadding="0" cellspacing="0" role="presentation" style="max-width:620px; width:100%;">
-            <tr><td style="padding-bottom:24px; text-align:center;">
-                <img src="${LOGO_URL}" alt="Local Threads" width="120" style="display:inline-block; max-width:120px; height:auto; border:0;">
+            <tr><td style="padding:8px 0 28px; text-align:center;">
+                <span style="font-family:${HEADING_FONT}; font-weight:900; font-size:30px; letter-spacing:0.02em; color:${TEXT}; text-transform:uppercase;">Local<span style="color:${ACCENT_SOFT};">threads</span></span>
             </td></tr>
             ${innerHTML}
-            <tr><td style="padding:28px 8px 0; text-align:center; border-top:1px solid ${SUBTLE_LINE}; margin-top:8px;">
-                <p style="font-family:${BODY_FONT}; font-size:12px; color:${TEXT_DIM}; margin:18px 0 6px; line-height:1.6;">${escapeHtml(SHOP_CONFIG.shop_name)} · 1742 S State St, Orem UT 84097</p>
-                <p style="font-family:${BODY_FONT}; font-size:12px; color:${TEXT_DIM}; margin:0; line-height:1.6;"><a href="tel:${escapeHtml(SHOP_CONFIG.shop_phone)}" style="color:${TEXT_MUTED}; text-decoration:none;">${escapeHtml(SHOP_CONFIG.shop_phone)}</a> · <a href="mailto:${escapeHtml(SHOP_CONFIG.shop_email)}" style="color:${ACCENT_SOFT}; text-decoration:none;">${escapeHtml(SHOP_CONFIG.shop_email)}</a> · <a href="https://www.localthreadsohio.com" style="color:${ACCENT_SOFT}; text-decoration:none;">localthreadsohio.com</a></p>
+            <tr><td style="padding:28px 8px 0; text-align:center; border-top:1px solid ${SUBTLE_LINE};">
+                <p style="font-family:${BODY_FONT}; font-size:12px; color:${TEXT_MUTED}; margin:20px 0 6px; line-height:1.7;">${escapeHtml(SHOP_CONFIG.shop_name)} &middot; 955 Checkrein Ave, Columbus, OH 43229</p>
+                <p style="font-family:${BODY_FONT}; font-size:12px; color:${TEXT_MUTED}; margin:0; line-height:1.7;"><a href="tel:${escapeHtml(SHOP_CONFIG.shop_phone)}" style="color:${TEXT_MUTED}; text-decoration:none;">${escapeHtml(SHOP_CONFIG.shop_phone)}</a> &middot; <a href="mailto:${escapeHtml(SHOP_CONFIG.shop_email)}" style="color:${ACCENT_SOFT}; text-decoration:none;">${escapeHtml(SHOP_CONFIG.shop_email)}</a> &middot; <a href="https://www.localthreadsohio.com" style="color:${ACCENT_SOFT}; text-decoration:none;">localthreadsohio.com</a></p>
             </td></tr>
         </table>
     </td></tr>
@@ -89,7 +88,7 @@ function renderSizeBreakdown(sizeBreakdown) {
     const cells = entries
         .map(
             ([size, qty]) => `
-        <td align="center" style="padding:10px 4px; background:rgba(37,115,241,0.10); border:1px solid rgba(37,115,241,0.25); border-radius:8px;">
+        <td align="center" style="padding:10px 4px; background:rgba(184,90,54,0.10); border:1px solid rgba(184,90,54,0.25); border-radius:8px;">
             <div style="font-family:${HEADING_FONT}; font-size:10px; letter-spacing:0.1em; text-transform:uppercase; color:${TEXT_DIM}; font-weight:700;">${escapeHtml(size)}</div>
             <div style="font-family:${HEADING_FONT}; font-size:18px; color:${TEXT}; font-weight:800; margin-top:2px;">${escapeHtml(qty)}</div>
         </td>`
@@ -135,7 +134,7 @@ export function buildMerchantHTML(data) {
         <p style="font-family:${BODY_FONT}; font-size:13px; color:${TEXT_DIM}; margin:0 0 16px;">Submitted ${escapeHtml(submittedAt)}</p>
         <table width="100%" cellpadding="0" cellspacing="0" role="presentation">
             <tr>
-                <td style="padding:14px 16px; background:rgba(37,115,241,0.15); border:1px solid rgba(37,115,241,0.35); border-radius:10px; width:50%;">
+                <td style="padding:14px 16px; background:rgba(184,90,54,0.15); border:1px solid rgba(184,90,54,0.35); border-radius:10px; width:50%;">
                     <div style="font-family:${HEADING_FONT}; font-size:10px; letter-spacing:0.14em; text-transform:uppercase; color:${TEXT_DIM}; font-weight:700;">Total Quote</div>
                     <div style="font-family:${HEADING_FONT}; font-size:28px; color:${ACCENT_SOFT}; font-weight:800; margin-top:2px;">${escapeHtml(formatMoney(totalQuote))}</div>
                 </td>
@@ -255,7 +254,7 @@ export function buildCustomerHTML(data) {
 
     const artworkBlock = artworkIsURL
         ? `
-        <table width="100%" cellpadding="0" cellspacing="0" role="presentation" style="background:rgba(37,115,241,0.10); border:1px solid rgba(37,115,241,0.30); border-radius:12px; margin-bottom:16px;">
+        <table width="100%" cellpadding="0" cellspacing="0" role="presentation" style="background:rgba(184,90,54,0.10); border:1px solid rgba(184,90,54,0.30); border-radius:12px; margin-bottom:16px;">
             <tr><td style="padding:16px 20px;">
                 <p style="font-family:${HEADING_FONT}; font-size:11px; letter-spacing:0.14em; text-transform:uppercase; color:${ACCENT_SOFT}; margin:0 0 6px; font-weight:700;">Free Mockup Included</p>
                 <p style="font-family:${BODY_FONT}; font-size:14px; color:${TEXT}; line-height:1.6; margin:0;">We've got your file. We'll send back a free mockup so you can see exactly how it looks on the ${escapeHtml(garmentLabel)} before anything goes to production.</p>
