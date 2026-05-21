@@ -163,7 +163,7 @@ export default function FinalQuote({
         );
         const customerSubject = buildCustomerSubject(garmentLabel || 'Project', quantity);
 
-        const endpoint = import.meta.env.VITE_SEND_QUOTE_ENDPOINT || '/api/send-quote';
+        const endpoint = import.meta.env.VITE_SEND_QUOTE_ENDPOINT || '/.netlify/functions/send-quote';
 
         const postEmail = (payload) =>
             fetch(endpoint, {
@@ -177,15 +177,18 @@ export default function FinalQuote({
 
         try {
             await Promise.all([
-                // Merchant notification: customer email as Reply-To so Noah can hit Reply
+                // Merchant notification: candice@ as TO, ryan@ on CC, brian@ on BCC.
+                // Customer email goes on Reply-To so a single tap on Reply routes to them.
                 postEmail({
                     to: SHOP_CONFIG.shop_email,
+                    cc: SHOP_CONFIG.shop_email_cc,
+                    bcc: SHOP_CONFIG.shop_email_bcc,
                     subject: merchantSubject,
                     html: merchantHTML,
                     fromName: 'Local Threads Calculator',
                     replyTo: formData.email,
                 }),
-                // Customer quote: Blink as Reply-To so replies route to orders@localthreadsohio.com
+                // Customer quote: Local Threads as Reply-To so replies route to candice@.
                 postEmail({
                     to: formData.email,
                     subject: customerSubject,
