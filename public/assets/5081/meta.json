@@ -1,0 +1,17 @@
+{
+  "sku": "5081",
+  "label": "Heavy Cotton Long Sleeve Tee",
+  "brand": "AS Colour",
+  "garment_type": "longsleeve",
+  "retail_price": 34.0,
+  "base_price": 17.0,
+  "product_url": "https://ascolour.com/mens-heavy-l-s-tee-5081/",
+  "hex_map": {
+    "White": "#FFFFFF",
+    "Butter": "#F4F0D7",
+    "Ecru": "#E4E0D4",
+    "Cypress": "#51594A",
+    "Midnight Blue": "#35374C",
+    "Black": "#000000"
+  }
+}

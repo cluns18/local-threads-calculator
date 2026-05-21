@@ -1,0 +1,33 @@
+{
+  "sku": "39-165",
+  "label": "OTTO CAP 5 Panel High Crown Mesh Back Trucker Hat",
+  "brand": "Otto Cap",
+  "garment_type": "hat",
+  "base_price": 4.84,
+  "source": "theparkwholesale.com",
+  "notes": "Solid-color variants only (22). Otto 39-165 catalog includes 70+ additional multi-color/split variants and camo patterns not listed here. Image URL pattern verified from Shopify CDN. No hex codes published on source.",
+  "hex_map": {
+    "Black": "#000000",
+    "White": "#FFFFFF",
+    "Red": "#C8102E",
+    "Royal": "#1D4F91",
+    "Navy": "#1B2951",
+    "Kelly": "#1B7339",
+    "Gold": "#C8A008",
+    "Brown": "#5C3C2E",
+    "Maroon": "#6D1C1C",
+    "Purple": "#4B2673",
+    "Grey": "#8A8A8A",
+    "Charcoal Gray": "#404447",
+    "Dark Green": "#20402B",
+    "Olive Green": "#595843",
+    "Khaki": "#A89B7C",
+    "Orange": "#E36F1E",
+    "Turquoise": "#0D7F8E",
+    "Jade": "#117760",
+    "Tan": "#B89B77",
+    "Soft Pink": "#EBC4CE",
+    "Colonial Blue": "#3A6F8F",
+    "Burgundy Maroon": "#4E1F23"
+  }
+}

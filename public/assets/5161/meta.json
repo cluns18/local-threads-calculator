@@ -1,0 +1,33 @@
+{
+  "sku": "5161",
+  "label": "Premium Hood",
+  "brand": "AS Colour",
+  "garment_type": "hoodie",
+  "retail_price": 52.0,
+  "base_price": 26.0,
+  "product_url": "https://ascolour.com/mens-relax-hood-5161/",
+  "hex_map": {
+    "White": "#FFFFFF",
+    "Butter": "#F4F0D7",
+    "Ecru": "#E4E0D4",
+    "Sand": "#B7B09D",
+    "Charity Pink": "#D56793",
+    "Clay": "#875632",
+    "Cypress": "#51594A",
+    "Pine Green": "#1D342A",
+    "Walnut": "#6B5A4A",
+    "Chestnut": "#4E332A",
+    "Seafoam": "#E6F3F4",
+    "Carolina Blue": "#A0BFE2",
+    "Powder": "#989FB1",
+    "Liberty": "#253668",
+    "Cobalt": "#212B51",
+    "Ink Blue": "#2D2A33",
+    "White Heather": "#E4E4E6",
+    "Bone": "#D1CDCA",
+    "Storm": "#A4ABA7",
+    "Athletic Heather": "#A4A4A2",
+    "Shadow": "#626367",
+    "Black": "#000000"
+  }
+}

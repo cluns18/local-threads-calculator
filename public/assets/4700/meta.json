@@ -1,0 +1,28 @@
+{
+  "sku": "4700",
+  "label": "'47 Brand Clean Up Cap",
+  "brand": "'47 Brand",
+  "garment_type": "hat",
+  "base_price": 9.39,
+  "source": "joesusa.com",
+  "notes": "17 confirmed colors. Price is distributor sale price; MSRP ~$17.99. Garment-washed 100% cotton twill, unstructured low profile, pre-curved visor, '47 snap-slide buckle closure, OSFA.",
+  "hex_map": {
+    "Black": "#000000",
+    "White": "#FFFFFF",
+    "Navy": "#1B2951",
+    "Vintage Navy": "#34495E",
+    "Red": "#C8102E",
+    "Cardinal": "#8C1D40",
+    "Royal": "#1D4F91",
+    "Kelly": "#1B7339",
+    "Dark Green": "#1E3F2A",
+    "Camo Green": "#4A5D3A",
+    "Charcoal": "#404447",
+    "Khaki": "#A89B7C",
+    "Columbia Blue": "#9BCBEB",
+    "Gold": "#C8A008",
+    "Dark Maroon": "#4E1F23",
+    "Orange": "#E36F1E",
+    "Purple": "#4B2673"
+  }
+}
