@@ -23,7 +23,8 @@ export default function FinalQuote({
     const isHat = selectedGarmentType?.id && HAT_TYPES.includes(selectedGarmentType.id);
     const isPatch = selectedProject === 'patches';
     const sizes = (isHat || isPatch) ? null : GARMENT_SIZES;
-    const MOQ = 24;
+    // Local Threads minimums: 24pc screen print, 12pc embroidery.
+    const MOQ = selectedProject === 'embroidery' ? 12 : 24;
 
     const garmentLabel = selectedModel || selectedGarmentType?.name || '';
     const locationList = selectedLocation?.length > 0 ? selectedLocation.join(', ') : '';
@@ -177,11 +178,11 @@ export default function FinalQuote({
 
         try {
             await Promise.all([
-                // Merchant notification: candice@ as TO, ryan@ on CC, brian@ on BCC.
+                // Merchant notification: ryan@ as TO, brian@ on BCC.
                 // Customer email goes on Reply-To so a single tap on Reply routes to them.
                 postEmail({
                     to: SHOP_CONFIG.shop_email,
-                    cc: SHOP_CONFIG.shop_email_cc,
+                    ...(SHOP_CONFIG.shop_email_cc ? { cc: SHOP_CONFIG.shop_email_cc } : {}),
                     bcc: SHOP_CONFIG.shop_email_bcc,
                     subject: merchantSubject,
                     html: merchantHTML,
@@ -351,7 +352,11 @@ export default function FinalQuote({
                             onMouseEnter={(e) => { if (isFormValid && !belowMOQ) { e.target.style.background = '#D67E4E'; e.target.style.transform = 'translateY(-1px)'; } }}
                             onMouseLeave={(e) => { e.target.style.background = '#B85A36'; e.target.style.transform = 'translateY(0)'; }}
                         >
-                            See Your Full Breakdown
+                            {belowMOQ
+                                ? `Add ${MOQ - quantity} More To Continue`
+                                : !isFormValid
+                                ? 'Complete Your Details'
+                                : 'See Your Full Breakdown'}
                         </button>
                     </div>
                 ) : (
@@ -427,7 +432,13 @@ export default function FinalQuote({
                                 onMouseEnter={(e) => { if (isFormValid && !belowMOQ) { e.target.style.background = '#D67E4E'; e.target.style.transform = 'translateY(-1px)'; e.target.style.boxShadow = '0 6px 20px rgba(37,115,241,0.3)'; } }}
                                 onMouseLeave={(e) => { e.target.style.background = '#B85A36'; e.target.style.transform = 'translateY(0)'; e.target.style.boxShadow = 'none'; }}
                             >
-                                {isSubmitting ? 'Sending...' : 'Save & Send to Me'}
+                                {isSubmitting
+                                    ? 'Sending...'
+                                    : belowMOQ
+                                    ? `Add ${MOQ - quantity} More To Continue`
+                                    : !isFormValid
+                                    ? 'Complete Your Details'
+                                    : 'Save & Send to Me'}
                             </button>
                         </div>
                     </div>

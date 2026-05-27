@@ -44,7 +44,7 @@ export default function GarmentModelSelect({ pricingData, selectedGarmentType, s
                     </div>
                     <div className='w-1/2 grid grid-cols-1 gap-2 garment-buttons'>
                         {models.map((m) => {
-                            const tagline = getTagline(m.label);
+                            const tagline = getTagline(selectedGarmentType?.id, m.label);
                             const active = selectedModel === m.label;
                             return (
                                 <button

@@ -1,7 +1,7 @@
 const SHOP_CONFIG = {
     shop_name: 'Local Threads',
-    shop_email: 'candice@localthreadsohio.com',
-    shop_email_cc: 'ryan@localthreadsohio.com',
+    shop_email: 'ryan@localthreadsohio.com',
+    shop_email_cc: '',
     shop_email_bcc: 'brian@olivebranchgrowth.com',
     shop_phone: '(614) 725-9005',
     owner_name: 'Ryan & Candice',
