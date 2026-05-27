@@ -74,14 +74,24 @@ const TAGLINES = {
 };
 
 export function lookupGarment(garmentTypeId, label) {
-    const skuId = LABEL_TO_SKU[label];
-    if (!skuId) return null;
     const cat = BY_CAT[garmentTypeId];
     if (!cat) return null;
-    return cat[skuId] || null;
+    // 1) Direct map from a sheet/SKU-style label (e.g. "CS420", "NL6210 - 60/40").
+    const skuId = LABEL_TO_SKU[label];
+    if (skuId && cat[skuId]) return cat[skuId];
+    // 2) Fallback: the pricing rows use each garment's full retail name
+    //    (e.g. "CornerStone 420 Polo"), so match on the garment's own fields.
+    const match = Object.values(cat).find(
+        (g) => g.label === label || g.name === label || g.id === label
+    );
+    return match || null;
 }
 
-export function getTagline(label) {
+export function getTagline(garmentTypeId, label) {
+    // Resolve the garment first so taglines work whether the label is a
+    // SKU code or the full retail name fed in by the pricing sheet.
+    const g = lookupGarment(garmentTypeId, label);
+    if (g && TAGLINES[g.id]) return TAGLINES[g.id];
     return TAGLINES[label] || '';
 }
 
