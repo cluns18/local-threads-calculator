@@ -1,5 +1,5 @@
 import React from 'react';
-import logo from '/assets/local-threads-logo.webp';
+import logo from '/assets/local-threads-logo.png';
 
 export default function ThankYou() {
     return (
@@ -20,13 +20,13 @@ export default function ThankYou() {
                         Questions? Reach out anytime:
                     </p>
                     <p className='mt-2 text-lg'>
-                        <a href='mailto:orders@localthreadsohio.com' className='headingColor hover:opacity-80 transition font-semibold underline'>
-                            orders@localthreadsohio.com
+                        <a href='mailto:ryan@localthreadsohio.com' className='headingColor hover:opacity-80 transition font-semibold underline'>
+                            ryan@localthreadsohio.com
                         </a>
                     </p>
                     <p className='mt-1 text-base'>
-                        <a href='tel:8014266533' className='headingColor hover:opacity-80 transition font-semibold'>
-                            (801) 426-6533
+                        <a href='tel:6147259005' className='headingColor hover:opacity-80 transition font-semibold'>
+                            (614) 725-9005
                         </a>
                     </p>
                 </div>
