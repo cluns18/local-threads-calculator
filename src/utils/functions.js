@@ -1,4 +1,4 @@
-import { lookupPrice, getScreenPrintingRow } from './fetchPricing';
+import { lookupPrice, getScreenPrintingRow, SCREEN_FEE_PER_COLOR, EMBROIDERY_SETUP_FEE } from './fetchPricing';
 
 const calculateFinalQuote = (pricingData, {
     selectedProject,
@@ -80,7 +80,22 @@ const calculateFinalQuote = (pricingData, {
             }
         }
 
-        pricePerItem = garmentCost + decorationCost;
+        // Setup fees (screen burn / embroidery setup) are folded into the per-item price and
+        // amortized across the run. They are NEVER surfaced to the customer as a separate line,
+        // in the calculator or the design lab. The customer only ever sees per-item and total.
+        let setupFees = 0;
+        if (selectedProject === 'screenPrinting') {
+            // One screen per ink color, per print location. Dark garments add an underbase screen.
+            const isLight = selectedColor?.underbase === 0;
+            const totalScreens = Object.values(locationColorCounts || {})
+                .reduce((sum, c) => sum + (isLight ? c : c + 1), 0);
+            setupFees = totalScreens * SCREEN_FEE_PER_COLOR;
+        } else if (selectedProject === 'embroidery') {
+            setupFees = EMBROIDERY_SETUP_FEE;
+        }
+        const feePerItem = quantity > 0 ? setupFees / quantity : 0;
+
+        pricePerItem = garmentCost + decorationCost + feePerItem;
     }
 
     return {

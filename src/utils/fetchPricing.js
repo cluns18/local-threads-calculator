@@ -1,7 +1,9 @@
 // Local Threads calculator pricing data (static).
-// Decoration values seeded from 456 Print Co's matrix.
-// Garment blank rows generated from per-garment modules with a 1.4x markup.
-// Replace these values with Local Threads' actual rates once Candice sends the matrix.
+// Real Local Threads rates, from Candice's "Updated Pricing Matrix" (xlsx), received 2026-07-16.
+// Screen printing, embroidery base, and the flat 40% garment markup are their confirmed numbers.
+// OPEN ITEMS (see PR notes): their embroidery model is base (<=5,000 stitches) + a per-stitch
+// surcharge, and their sheet lists a $25/color screen fee and a $50 embroidery setup fee. The
+// 2-row embroidery engine and per-order setup fees are not yet wired to match.
 
 import tshirts from '../garments/tshirts';
 import longsleeves from '../garments/longsleeves';
@@ -9,8 +11,14 @@ import hoodies from '../garments/hoodies';
 import polos from '../garments/polos';
 import hats from '../garments/hats';
 
+// Behind-the-scenes setup fees, from Local Threads' sheet. Folded into per-item price by
+// calculateFinalQuote and amortized across the order. Never shown to the customer as a line item.
+export const SCREEN_FEE_PER_COLOR = 25;   // one-time screen burn fee, per ink color
+export const EMBROIDERY_SETUP_FEE = 50;   // one-time embroidery setup fee, per order
+
 const GARMENT_TIERS = [24, 48, 72, 144, 288, 500];
-const GARMENT_MARKUP_BY_TIER = [1.50, 1.45, 1.40, 1.35, 1.30, 1.25];
+// Local Threads: flat 40% markup across all tiers (wholesale cost x 1.4). Confirmed by Candice.
+const GARMENT_MARKUP_BY_TIER = [1.40, 1.40, 1.40, 1.40, 1.40, 1.40];
 
 function buildGarmentSection(garmentMap) {
     const rows = Object.values(garmentMap).map(g => ({
@@ -21,30 +29,33 @@ function buildGarmentSection(garmentMap) {
 }
 
 // Screen printing: rows = color count + underbase, columns = qty tier.
-// Sourced from 456's screenPrintingMatrix (transposed).
+// Local Threads' numbers (their sheet is qty x colors; transposed here to colors x qty).
 const SCREEN_PRINTING = {
-    tiers: [50, 100, 200, 500, 2000, 4000],
+    tiers: [24, 100, 200, 500, 2000, 4000],
     rows: [
-        { label: '1 Color Light Shirt',           prices: [1.89, 1.80, 1.62, 1.35, 1.17, 0.90] },
-        { label: '2 Color Light/1 Color Dark',    prices: [2.25, 2.07, 1.80, 1.44, 1.35, 0.99] },
-        { label: '3 Color Light/2 Color Dark',    prices: [2.70, 2.34, 1.98, 1.53, 1.44, 1.08] },
-        { label: '4 Color Light/3 Color Dark',    prices: [3.15, 2.61, 2.16, 1.62, 1.53, 1.17] },
-        { label: '5 Color Light/4 Color Dark',    prices: [3.60, 2.88, 2.52, 1.71, 1.62, 1.26] },
-        { label: '6 Color Light/5 Color Dark',    prices: [4.05, 3.15, 2.97, 1.80, 1.71, 1.35] },
-        { label: '7 Color Light/6 Color Dark',    prices: [4.50, 3.42, 3.24, 1.89, 1.80, 1.44] },
-        { label: '8 Color Light/7 Color Dark',    prices: [5.40, 3.69, 3.60, 1.98, 1.89, 1.53] },
-        { label: '9 Color Light/8 Color Dark',    prices: [6.30, 4.14, 3.96, 2.07, 1.98, 1.62] },
-        { label: '10 Color Light/9 Color Dark',   prices: [7.20, 4.50, 4.32, 2.16, 2.07, 1.71] },
+        { label: '1 Color Light Shirt',           prices: [2.40, 2.30, 2.15, 1.85, 1.65, 1.40] },
+        { label: '2 Color Light/1 Color Dark',    prices: [2.75, 2.60, 2.30, 1.95, 1.85, 1.50] },
+        { label: '3 Color Light/2 Color Dark',    prices: [3.20, 2.85, 2.50, 2.00, 1.75, 1.55] },
+        { label: '4 Color Light/3 Color Dark',    prices: [3.65, 3.10, 2.45, 2.10, 2.00, 1.65] },
+        { label: '5 Color Light/4 Color Dark',    prices: [4.10, 3.40, 3.00, 2.20, 2.10, 1.75] },
+        { label: '6 Color Light/5 Color Dark',    prices: [4.50, 4.00, 3.50, 2.30, 2.15, 1.85] },
+        { label: '7 Color Light/6 Color Dark',    prices: [5.00, 4.10, 3.75, 2.40, 2.20, 2.00] },
+        { label: '8 Color Light/7 Color Dark',    prices: [6.00, 4.20, 4.00, 2.50, 2.40, 2.05] },
+        { label: '9 Color Light/8 Color Dark',    prices: [6.50, 4.60, 4.50, 2.60, 2.50, 2.10] },
+        { label: '10 Color Light/9 Color Dark',   prices: [8.00, 5.00, 4.75, 2.75, 2.60, 2.25] },
     ],
 };
 
 // Embroidery: rows = stitch count tier, columns = qty tier.
-// 0-10K base from 456's embroideryMatrix. 10K+ adds ~$1.50/piece per 456's stitchPrice formula.
+// Row 0 = Local Threads' real base table (up to 5,000 stitches), by quantity.
+// Row 1 (higher stitch) is PROVISIONAL: base + ~$8 surcharge, my read of their formula
+// "$6 + $1.50 per 5K stitches over 5K." Their sheet only gives the base table, so these
+// upper-stitch numbers need Candice's confirmation before we treat them as final.
 const EMBROIDERY = {
-    tiers: [12, 18, 24, 36, 50, 72],
+    tiers: [12, 24, 50, 100, 150, 200],
     rows: [
-        { label: '0-10K stitches',  prices: [10.00, 9.50, 8.00, 7.70, 7.40, 7.00] },
-        { label: '10-20K stitches', prices: [11.50, 11.00, 9.50, 9.20, 8.90, 8.50] },
+        { label: '0-10K stitches',  prices: [10.00, 8.00, 7.75, 7.50, 7.00, 6.50] },
+        { label: '10-20K stitches', prices: [18.00, 16.00, 15.75, 15.50, 15.00, 14.50] },
     ],
 };
 
