@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import './App.css';
 import { fetchPricing } from './utils/fetchPricing';
+import { initAnalytics, trackFunnelStep } from './utils/analytics';
 import IntroSlide from './pages/IntroSlide';
 import GarmentTypeSelect from './pages/GarmentTypeSelect';
 import GarmentModelSelect from './pages/GarmentModelSelect';
@@ -40,6 +41,15 @@ function App() {
             .then(data => setPricingData(data))
             .catch(() => setPricingError(true));
     }, []);
+
+    // Analytics: init once, then log every slide the user reaches so drop-off
+    // between steps is measurable (funnel + Clarity heatmaps/replays).
+    useEffect(() => {
+        initAnalytics();
+    }, []);
+    useEffect(() => {
+        trackFunnelStep(currentSlide);
+    }, [currentSlide]);
 
     const handleNext = () => {
         let nextSlide = '';
