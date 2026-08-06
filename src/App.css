@@ -300,3 +300,175 @@ input[type=number] {
     .counter-pill span:first-child { font-size: 0.7rem !important; }
     .counter-pill span:last-child { font-size: 0.8rem !important; }
 }
+
+/* ── Full S&S catalog browser (GarmentModelSelect) ── */
+.catalog-search {
+    width: 100%;
+    flex-shrink: 0;
+    padding: 8px 12px;
+    border: 2px solid rgba(255, 255, 255, 0.12);
+    border-radius: 8px;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 0.82rem;
+    outline: none;
+}
+
+.catalog-search:focus {
+    border-color: #B85A36 !important;
+}
+
+.catalog-msg {
+    font-size: 0.78rem;
+    text-align: center;
+    padding: 12px;
+    opacity: 0.7;
+}
+
+.catalog-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 8px;
+    overflow-y: auto;
+    flex: 1 1 auto;
+    min-height: 0;
+    padding: 2px;
+}
+
+.catalog-card {
+    background: rgba(255, 255, 255, 0.04);
+    border: 2px solid rgba(255, 255, 255, 0.1);
+    border-radius: 8px;
+    padding: 6px 4px 5px;
+    cursor: pointer;
+    text-align: center;
+    font-family: 'DM Sans', sans-serif;
+    color: #F2EBDF;
+    transition: border-color 0.15s ease, background 0.15s ease;
+}
+
+.catalog-card:hover {
+    border-color: #B85A36;
+    background: rgba(184, 90, 54, 0.12);
+}
+
+.catalog-card-active {
+    border-color: #B85A36;
+    background: rgba(184, 90, 54, 0.2);
+}
+
+.catalog-card img {
+    width: 100%;
+    height: 72px;
+    object-fit: contain;
+    margin-bottom: 4px;
+}
+
+.catalog-card-noimg {
+    height: 72px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.6rem;
+    opacity: 0.4;
+    margin-bottom: 4px;
+}
+
+.catalog-card-brand {
+    font-size: 0.6rem;
+    opacity: 0.7;
+    line-height: 1.2;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.catalog-card-style {
+    font-size: 0.72rem;
+    font-weight: 700;
+    line-height: 1.2;
+}
+
+.catalog-card-price {
+    font-size: 0.6rem;
+    opacity: 0.55;
+    margin-top: 1px;
+}
+
+.catalog-pager {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 14px;
+    flex-shrink: 0;
+    padding: 2px 0 4px;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 0.72rem;
+}
+
+.catalog-pager button {
+    background: transparent;
+    border: 2px solid rgba(255, 255, 255, 0.12);
+    border-radius: 6px;
+    color: #F2EBDF;
+    padding: 3px 10px;
+    font-size: 0.72rem;
+    font-weight: 600;
+    cursor: pointer;
+}
+
+.catalog-pager button:hover:not(:disabled) {
+    border-color: #B85A36;
+}
+
+.catalog-pager button:disabled {
+    opacity: 0.3;
+    cursor: default;
+}
+
+.catalog-open {
+    background: transparent;
+    border: 2px dashed rgba(255, 255, 255, 0.18);
+    border-radius: 8px;
+    color: rgba(242, 235, 223, 0.75);
+    font-family: 'DM Sans', sans-serif;
+    font-size: 0.7rem;
+    font-weight: 600;
+    padding: 7px 10px;
+    cursor: pointer;
+    transition: border-color 0.2s ease, color 0.2s ease;
+}
+
+.catalog-open:hover {
+    border-color: #B85A36;
+    color: #F2EBDF;
+}
+
+.catalog-picked {
+    background: rgba(184, 90, 54, 0.18);
+    border: 2px solid #B85A36;
+    border-radius: 8px;
+    padding: 8px 12px;
+    font-family: 'DM Sans', sans-serif;
+    color: #F2EBDF;
+}
+
+.catalog-picked-label {
+    font-size: 0.78rem;
+    font-weight: 700;
+    line-height: 1.25;
+}
+
+.catalog-picked-sub {
+    font-size: 0.66rem;
+    opacity: 0.8;
+    margin-top: 1px;
+}
+
+@media (max-width: 768px) {
+    .catalog-grid { grid-template-columns: repeat(3, 1fr); }
+    .catalog-card img, .catalog-card-noimg { height: 64px; }
+}
+
+@media (max-width: 480px) {
+    .catalog-grid { grid-template-columns: repeat(2, 1fr); }
+}

@@ -55,6 +55,7 @@ export default function FinalQuote({
             selectedProject,
             selectedGarmentType: selectedGarmentType?.id,
             selectedModel,
+            selectedGarment,
             selectedColor,
             locationColorCounts,
             locationThreadCounts,
@@ -65,7 +66,7 @@ export default function FinalQuote({
         setPricePerItem(pricePerItem);
         setTotalPrice(totalQuote);
         setFinalQuote({ pricePerItem, totalPrice: totalQuote, quantity: qty });
-    }, 200), [pricingData, selectedProject, selectedGarmentType, selectedModel, selectedColor, locationColorCounts, locationThreadCounts, selectedPatchType, selectedPatchSize, setFinalQuote]);
+    }, 200), [pricingData, selectedProject, selectedGarmentType, selectedModel, selectedGarment, selectedColor, locationColorCounts, locationThreadCounts, selectedPatchType, selectedPatchSize, setFinalQuote]);
 
     useEffect(() => { fetchQuote(quantity); }, [quantity, fetchQuote]);
 
