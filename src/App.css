@@ -433,11 +433,23 @@ input[type=number] {
     white-space: nowrap;
 }
 
-.catalog-card-price {
-    font-size: 0.6rem;
-    opacity: 0.75;
-    font-weight: 600;
+/* All four signs always render. The unearned ones stay visible but dim, so the
+   band reads as a scale ($$ of 4) rather than as an unlabelled count. */
+.price-tier {
+    font-size: 0.72rem;
+    font-weight: 700;
+    letter-spacing: 0.06em;
     margin-top: 3px;
+    line-height: 1;
+}
+
+.price-tier-on {
+    color: #E8A87C;
+}
+
+.price-tier-off {
+    color: #F2EBDF;
+    opacity: 0.22;
 }
 
 .catalog-pager {
@@ -514,6 +526,15 @@ input[type=number] {
     font-size: 0.66rem;
     opacity: 0.8;
     margin-top: 1px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    flex-wrap: wrap;
+}
+
+.catalog-picked-sub .price-tier {
+    margin-top: 0;
+    opacity: 1;
 }
 
 @media (max-width: 768px) {

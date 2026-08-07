@@ -2,11 +2,20 @@ import React, { useEffect, useState } from 'react';
 import NavBtn from '../components/NavBtn';
 import { lookupGarment, getTagline } from '../garments/skuByLabel';
 import { searchCatalog, countCatalog, catalogEnabled, PAGE_SIZE } from '../utils/catalog';
-import { garmentRetail } from '../utils/fetchPricing';
 
-// Shown next to a catalog style so the customer can tell a $4 blank from a $20
-// one. Priced at the smallest tier since they have not picked a quantity yet.
-const blankPrice = (cost) => garmentRetail(cost, 0).toFixed(2);
+// How expensive this blank is relative to others of the same garment type, the
+// way Yelp rates a restaurant. The customer needs to tell a cheap tee from a
+// pricey one without us publishing what the garment itself costs.
+function PriceTier({ tier }) {
+    const level = Math.min(4, Math.max(1, tier || 1));
+    return (
+        <div className='price-tier' aria-label={`${level} out of 4 on price`}>
+            {[1, 2, 3, 4].map((i) => (
+                <span key={i} className={i <= level ? 'price-tier-on' : 'price-tier-off'}>$</span>
+            ))}
+        </div>
+    );
+}
 
 // A real brand and a real style number for the type being browsed, so the hint
 // is something the customer could actually type. Hats do not sell Comfort Colors.
@@ -100,9 +109,10 @@ export default function GarmentModelSelect({ pricingData, selectedGarmentType, s
         return (
             <>
                 <div className='slide-header' style={{ padding: '16px 24px 4px' }}>
-                    <h1 className='text-2xl font-bold headingColor'>All {garmentTypeName}s</h1>
+                    <h1 className='text-2xl font-bold headingColor'>Full catalog</h1>
                     <p className='bodyColor' style={{ fontSize: '0.78rem', marginTop: '2px' }}>
-                        Search by brand or style number. Most popular first.
+                        {resultTotal || catalogTotal} {garmentTypeName.toLowerCase()} options, most popular first.
+                        Search by brand or style number.
                     </p>
                 </div>
                 <div className='slide-content' style={{ justifyContent: 'flex-start', gap: '8px', padding: '0 20px' }}>
@@ -151,7 +161,7 @@ export default function GarmentModelSelect({ pricingData, selectedGarmentType, s
                                             <div className='catalog-card-style'>{g.styleName}</div>
                                             {g.title && <div className='catalog-card-title'>{g.title}</div>}
                                             {g.blurb && <div className='catalog-card-blurb'>{g.blurb}</div>}
-                                            <div className='catalog-card-price'>garment ${blankPrice(g.cost)}</div>
+                                            <PriceTier tier={g.priceTier} />
                                         </div>
                                     </button>
                                 );
@@ -168,7 +178,7 @@ export default function GarmentModelSelect({ pricingData, selectedGarmentType, s
                     )}
                 </div>
                 <div className='slide-nav'>
-                    <NavBtn onClick={() => setBrowsing(false)} direction='prev'>&larr; Our regulars</NavBtn>
+                    <NavBtn onClick={() => setBrowsing(false)} direction='prev'>&larr; Recommended</NavBtn>
                     <NavBtn onClick={() => onNext()}>Next &rarr;</NavBtn>
                 </div>
             </>
@@ -200,8 +210,8 @@ export default function GarmentModelSelect({ pricingData, selectedGarmentType, s
                                     <div className='catalog-picked-title'>{selectedGarment.title}</div>
                                 )}
                                 <div className='catalog-picked-sub'>
-                                    {selectedGarment.blurb ? `${selectedGarment.blurb} · ` : ''}
-                                    garment ${blankPrice(selectedGarment.cost)}
+                                    {selectedGarment.blurb && <span>{selectedGarment.blurb}</span>}
+                                    <PriceTier tier={selectedGarment.priceTier} />
                                 </div>
                             </div>
                         )}
@@ -226,7 +236,7 @@ export default function GarmentModelSelect({ pricingData, selectedGarmentType, s
                         })}
                         {catalogEnabled && catalogTotal > 0 && (
                             <button className='catalog-open' onClick={() => { setSearchInput(''); setSearch(''); setPage(0); setBrowsing(true); }}>
-                                Looking for something else? Browse all {catalogTotal} styles &rarr;
+                                Explore all {catalogTotal} options &rarr;
                             </button>
                         )}
                     </div>

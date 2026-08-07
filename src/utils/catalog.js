@@ -72,6 +72,9 @@ function mapRow(row) {
         // styles S&S no longer publishes, so every use site has to tolerate that.
         title: row.title || null,
         blurb: row.blurb || null,
+        // 1-4, a quartile of the wholesale cost against other styles of the same
+        // garment type. The customer sees this instead of a garment price.
+        priceTier: Number(row.price_tier) || 1,
         cost: Number(row.base_cost),
         stockImage: large(row.image_url) || colors[0]?.previewImage || null,
         colors,
@@ -80,7 +83,7 @@ function mapRow(row) {
     };
 }
 
-const SELECT = 'id, slug, brand, style_name, style_number, base_cost, image_url, popularity_qty, colors, title, blurb';
+const SELECT = 'id, slug, brand, style_name, style_number, base_cost, image_url, popularity_qty, colors, title, blurb, price_tier';
 
 /**
  * Page through the catalog for one garment type.
