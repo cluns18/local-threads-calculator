@@ -146,9 +146,13 @@ export default function GarmentModelSelect({ pricingData, selectedGarmentType, s
                                         ) : (
                                             <div className='catalog-card-noimg'>No photo</div>
                                         )}
-                                        <div className='catalog-card-brand'>{g.brand}</div>
-                                        <div className='catalog-card-style'>{g.styleName}</div>
-                                        <div className='catalog-card-price'>garment ${blankPrice(g.cost)}</div>
+                                        <div className='catalog-card-text'>
+                                            <div className='catalog-card-brand'>{g.brand}</div>
+                                            <div className='catalog-card-style'>{g.styleName}</div>
+                                            {g.title && <div className='catalog-card-title'>{g.title}</div>}
+                                            {g.blurb && <div className='catalog-card-blurb'>{g.blurb}</div>}
+                                            <div className='catalog-card-price'>garment ${blankPrice(g.cost)}</div>
+                                        </div>
                                     </button>
                                 );
                             })}
@@ -192,7 +196,13 @@ export default function GarmentModelSelect({ pricingData, selectedGarmentType, s
                         {selectedGarment?.fromCatalog && (
                             <div className='catalog-picked'>
                                 <div className='catalog-picked-label'>{selectedGarment.label}</div>
-                                <div className='catalog-picked-sub'>From the full catalog &middot; garment ${blankPrice(selectedGarment.cost)}</div>
+                                {selectedGarment.title && (
+                                    <div className='catalog-picked-title'>{selectedGarment.title}</div>
+                                )}
+                                <div className='catalog-picked-sub'>
+                                    {selectedGarment.blurb ? `${selectedGarment.blurb} · ` : ''}
+                                    garment ${blankPrice(selectedGarment.cost)}
+                                </div>
                             </div>
                         )}
                         {models.map((m) => {

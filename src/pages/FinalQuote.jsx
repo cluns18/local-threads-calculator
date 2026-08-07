@@ -26,7 +26,13 @@ export default function FinalQuote({
     // Local Threads minimums: 24pc screen print, 12pc embroidery.
     const MOQ = selectedProject === 'embroidery' ? 12 : 24;
 
-    const garmentLabel = selectedModel || selectedGarmentType?.name || '';
+    // Catalog styles are labelled by brand and number ("Richardson 112"), which
+    // is precise but says nothing about the garment. Carry S&S's product name
+    // through to the quote so the customer can see what they actually picked.
+    const baseLabel = selectedModel || selectedGarmentType?.name || '';
+    const garmentLabel = selectedGarment?.fromCatalog && selectedGarment.title
+        ? `${baseLabel} · ${selectedGarment.title}`
+        : baseLabel;
     const locationList = selectedLocation?.length > 0 ? selectedLocation.join(', ') : '';
 
     const [sizeBreakdown, setSizeBreakdown] = useState(
@@ -163,7 +169,9 @@ export default function FinalQuote({
             selectedGarmentType?.name || selectedModel || 'Quote',
             totalPrice.toFixed(2)
         );
-        const customerSubject = buildCustomerSubject(garmentLabel || 'Project', quantity);
+        // Subject line stays on the short label. The full product name belongs in
+        // the body, not in something that has to survive a phone's inbox preview.
+        const customerSubject = buildCustomerSubject(baseLabel || 'Project', quantity);
 
         const endpoint = import.meta.env.VITE_SEND_QUOTE_ENDPOINT || '/.netlify/functions/send-quote';
 

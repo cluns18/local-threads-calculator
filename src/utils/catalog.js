@@ -67,6 +67,11 @@ function mapRow(row) {
         name: label,
         brand: row.brand,
         styleName: row.style_name,
+        // S&S's own product name ("Unisex Heavy Cotton T-Shirt") and a one-line
+        // spec ("5.3 oz · 100% U.S. cotton"). Both can be null on the handful of
+        // styles S&S no longer publishes, so every use site has to tolerate that.
+        title: row.title || null,
+        blurb: row.blurb || null,
         cost: Number(row.base_cost),
         stockImage: large(row.image_url) || colors[0]?.previewImage || null,
         colors,
@@ -75,7 +80,7 @@ function mapRow(row) {
     };
 }
 
-const SELECT = 'id, slug, brand, style_name, style_number, base_cost, image_url, popularity_qty, colors';
+const SELECT = 'id, slug, brand, style_name, style_number, base_cost, image_url, popularity_qty, colors, title, blurb';
 
 /**
  * Page through the catalog for one garment type.
