@@ -94,7 +94,7 @@ export default function ArtworkSelect({ onNext, onPrevious, setUploadedImage, se
                             placeholder='Describe your design in detail...'
                             onChange={(e) => setArtworkDescription(e.target.value)}
                             className='w-full p-3 border-2 rounded-lg h-24 resize-none transition text-sm'
-                            style={{ fontFamily: "'DM Sans', sans-serif" }}
+                            style={{ fontFamily: 'var(--lt-font-body)' }}
                         />
                     </div>
                 </div>
