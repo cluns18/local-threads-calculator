@@ -9,12 +9,18 @@ export default function ColorSelect({ onNext, onPrevious, selectedGarment, selec
     const heroSrc = (c) => c?.previewImage || c?.image;
     const [selectedImage, setSelectedImage] = useState(heroSrc(selectedColor) || heroSrc(selectedGarment.colors[0]));
 
+    // Fall back to the first swatch whenever the held color does not belong to this
+    // garment. Going back and picking a different style used to keep the old color,
+    // which showed the wrong photo and, worse, priced off the old light/dark flag.
+    const colorBelongs = selectedColor
+        && selectedGarment.colors.some((c) => c.name === selectedColor.name);
+
     useEffect(() => {
-        if (!selectedColor && selectedGarment.colors.length > 0) {
+        if (!colorBelongs && selectedGarment.colors.length > 0) {
             setSelectedColor(selectedGarment.colors[0]);
             setSelectedImage(heroSrc(selectedGarment.colors[0]));
         }
-    }, []);
+    }, [selectedGarment, colorBelongs]);
 
     const handleColorSelect = (color) => {
         setSelectedColor(color);

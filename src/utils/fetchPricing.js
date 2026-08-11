@@ -20,6 +20,18 @@ const GARMENT_TIERS = [24, 48, 72, 144, 288, 500];
 // Local Threads: flat 40% markup across all tiers (wholesale cost x 1.4). Confirmed by Candice.
 const GARMENT_MARKUP_BY_TIER = [1.40, 1.40, 1.40, 1.40, 1.40, 1.40];
 
+// Retail price for a blank at a given quantity. Same rule whether the garment
+// came from the curated modules in src/garments/ or live from the S&S catalog,
+// which is what lets any catalog style price itself with no pricing row.
+export function garmentRetail(cost, quantity) {
+    if (!cost) return 0;
+    let tierIndex = 0;
+    for (let i = GARMENT_TIERS.length - 1; i >= 0; i--) {
+        if (quantity >= GARMENT_TIERS[i]) { tierIndex = i; break; }
+    }
+    return parseFloat((cost * GARMENT_MARKUP_BY_TIER[tierIndex]).toFixed(2));
+}
+
 function buildGarmentSection(garmentMap) {
     const rows = Object.values(garmentMap).map(g => ({
         label: g.label || g.name || g.id,

@@ -1,29 +1,189 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import NavBtn from '../components/NavBtn';
 import { lookupGarment, getTagline } from '../garments/skuByLabel';
+import { searchCatalog, countCatalog, catalogEnabled, PAGE_SIZE } from '../utils/catalog';
+
+// How expensive this blank is relative to others of the same garment type, the
+// way Yelp rates a restaurant. The customer needs to tell a cheap tee from a
+// pricey one without us publishing what the garment itself costs.
+function PriceTier({ tier }) {
+    const level = Math.min(4, Math.max(1, tier || 1));
+    return (
+        <div className='price-tier' aria-label={`${level} out of 4 on price`}>
+            {[1, 2, 3, 4].map((i) => (
+                <span key={i} className={i <= level ? 'price-tier-on' : 'price-tier-off'}>$</span>
+            ))}
+        </div>
+    );
+}
+
+// A real brand and a real style number for the type being browsed, so the hint
+// is something the customer could actually type. Hats do not sell Comfort Colors.
+const SEARCH_HINT = {
+    tshirts: 'Try "Comfort Colors" or "3001"',
+    longsleeves: 'Try "Gildan" or "2400"',
+    hoodies: 'Try "Independent" or "18500"',
+    polos: 'Try "CORE365" or "8800"',
+    hats: 'Try "Richardson" or "112"',
+};
 
 export default function GarmentModelSelect({ pricingData, selectedGarmentType, selectedModel, setSelectedModel, selectedGarment, setSelectedGarment, onNext, onPrevious }) {
-    const section = pricingData?.[selectedGarmentType?.id];
+    const typeId = selectedGarmentType?.id;
+    const section = pricingData?.[typeId];
     const models = section?.rows || [];
+
+    // Full-catalog browser
+    const [browsing, setBrowsing] = useState(false);
+    const [catalogTotal, setCatalogTotal] = useState(0);
+    const [results, setResults] = useState([]);
+    const [resultTotal, setResultTotal] = useState(0);
+    const [page, setPage] = useState(0);
+    const [searchInput, setSearchInput] = useState('');
+    const [search, setSearch] = useState('');
+    const [loading, setLoading] = useState(false);
+    const [error, setError] = useState(null);
 
     useEffect(() => {
         if (!selectedModel && models.length > 0) {
             const first = models[0];
             setSelectedModel(first.label);
-            const g = lookupGarment(selectedGarmentType?.id, first.label);
+            const g = lookupGarment(typeId, first.label);
             setSelectedGarment(g);
         }
     }, [models]);
 
+    // How many styles sit behind the "browse all" prompt.
+    useEffect(() => {
+        if (!catalogEnabled || !typeId) return;
+        let cancelled = false;
+        countCatalog(typeId).then(n => { if (!cancelled) setCatalogTotal(n); });
+        return () => { cancelled = true; };
+    }, [typeId]);
+
+    // Debounce typing so we are not firing a query per keystroke.
+    useEffect(() => {
+        const t = setTimeout(() => { setSearch(searchInput.trim()); setPage(0); }, 250);
+        return () => clearTimeout(t);
+    }, [searchInput]);
+
+    useEffect(() => {
+        if (!browsing || !typeId) return;
+        let cancelled = false;
+        setLoading(true);
+        setError(null);
+        searchCatalog({ garmentTypeId: typeId, search, page })
+            .then(({ garments, total }) => {
+                if (cancelled) return;
+                setResults(garments);
+                setResultTotal(total);
+                setLoading(false);
+            })
+            .catch((e) => {
+                if (cancelled) return;
+                setError(e.message);
+                setResults([]);
+                setResultTotal(0);
+                setLoading(false);
+            });
+        return () => { cancelled = true; };
+    }, [browsing, typeId, search, page]);
+
     const handleSelect = (label) => {
         setSelectedModel(label);
-        const g = lookupGarment(selectedGarmentType?.id, label);
+        const g = lookupGarment(typeId, label);
         setSelectedGarment(g);
+    };
+
+    const handleCatalogSelect = (garment) => {
+        setSelectedGarment(garment);
+        setSelectedModel(garment.label);
+        setBrowsing(false);
     };
 
     const garmentTypeName = selectedGarmentType?.name || 'Garment';
     const displayImage = selectedGarment?.stockImage;
     const displayAlt = selectedGarment?.label || selectedGarment?.name || selectedModel;
+    const lastPage = Math.max(0, Math.ceil(resultTotal / PAGE_SIZE) - 1);
+
+    if (browsing) {
+        return (
+            <>
+                <div className='slide-header' style={{ padding: '16px 24px 4px' }}>
+                    <h1 className='text-2xl font-bold headingColor'>Full catalog</h1>
+                    <p className='bodyColor' style={{ fontSize: '0.78rem', marginTop: '2px' }}>
+                        {resultTotal || catalogTotal} {garmentTypeName.toLowerCase()} options, most popular first.
+                        Search by brand or style number.
+                    </p>
+                </div>
+                <div className='slide-content' style={{ justifyContent: 'flex-start', gap: '8px', padding: '0 20px' }}>
+                    <input
+                        type='text'
+                        value={searchInput}
+                        onChange={(e) => setSearchInput(e.target.value)}
+                        placeholder={SEARCH_HINT[typeId] || 'Search by brand or style number'}
+                        className='catalog-search'
+                        autoFocus
+                    />
+
+                    {error && (
+                        <p className='bodyColor catalog-msg'>
+                            We could not load the full catalog right now. Pick one of our regulars and we will sort the rest out on the quote.
+                        </p>
+                    )}
+
+                    {!error && loading && (
+                        <p className='bodyColor catalog-msg'>Loading styles...</p>
+                    )}
+
+                    {!error && !loading && results.length === 0 && (
+                        <p className='bodyColor catalog-msg'>
+                            Nothing matched that. Try a brand name or a style number.
+                        </p>
+                    )}
+
+                    {!error && !loading && results.length > 0 && (
+                        <div className='catalog-grid'>
+                            {results.map((g) => {
+                                const active = selectedGarment?.id === g.id;
+                                return (
+                                    <button
+                                        key={g.id}
+                                        onClick={() => handleCatalogSelect(g)}
+                                        className={`catalog-card ${active ? 'catalog-card-active' : ''}`}
+                                    >
+                                        {g.stockImage ? (
+                                            <img src={g.stockImage} alt={g.label} loading='lazy' />
+                                        ) : (
+                                            <div className='catalog-card-noimg'>No photo</div>
+                                        )}
+                                        <div className='catalog-card-text'>
+                                            <div className='catalog-card-brand'>{g.brand}</div>
+                                            <div className='catalog-card-style'>{g.styleName}</div>
+                                            {g.title && <div className='catalog-card-title'>{g.title}</div>}
+                                            {g.blurb && <div className='catalog-card-blurb'>{g.blurb}</div>}
+                                            <PriceTier tier={g.priceTier} />
+                                        </div>
+                                    </button>
+                                );
+                            })}
+                        </div>
+                    )}
+
+                    {!error && resultTotal > PAGE_SIZE && (
+                        <div className='catalog-pager'>
+                            <button onClick={() => setPage(p => Math.max(0, p - 1))} disabled={page === 0}>&larr; Back</button>
+                            <span className='bodyColor'>{page + 1} of {lastPage + 1}</span>
+                            <button onClick={() => setPage(p => Math.min(lastPage, p + 1))} disabled={page >= lastPage}>Next &rarr;</button>
+                        </div>
+                    )}
+                </div>
+                <div className='slide-nav'>
+                    <NavBtn onClick={() => setBrowsing(false)} direction='prev'>&larr; Recommended</NavBtn>
+                    <NavBtn onClick={() => onNext()}>Next &rarr;</NavBtn>
+                </div>
+            </>
+        );
+    }
 
     return (
         <>
@@ -43,8 +203,20 @@ export default function GarmentModelSelect({ pricingData, selectedGarmentType, s
                         )}
                     </div>
                     <div className='w-1/2 grid grid-cols-1 gap-2 garment-buttons'>
+                        {selectedGarment?.fromCatalog && (
+                            <div className='catalog-picked'>
+                                <div className='catalog-picked-label'>{selectedGarment.label}</div>
+                                {selectedGarment.title && (
+                                    <div className='catalog-picked-title'>{selectedGarment.title}</div>
+                                )}
+                                <div className='catalog-picked-sub'>
+                                    {selectedGarment.blurb && <span>{selectedGarment.blurb}</span>}
+                                    <PriceTier tier={selectedGarment.priceTier} />
+                                </div>
+                            </div>
+                        )}
                         {models.map((m) => {
-                            const tagline = getTagline(selectedGarmentType?.id, m.label);
+                            const tagline = getTagline(typeId, m.label);
                             const active = selectedModel === m.label;
                             return (
                                 <button
@@ -62,6 +234,11 @@ export default function GarmentModelSelect({ pricingData, selectedGarmentType, s
                                 </button>
                             );
                         })}
+                        {catalogEnabled && catalogTotal > 0 && (
+                            <button className='catalog-open' onClick={() => { setSearchInput(''); setSearch(''); setPage(0); setBrowsing(true); }}>
+                                Explore all {catalogTotal} options &rarr;
+                            </button>
+                        )}
                     </div>
                 </div>
             </div>

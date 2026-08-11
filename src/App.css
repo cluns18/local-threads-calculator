@@ -300,3 +300,243 @@ input[type=number] {
     .counter-pill span:first-child { font-size: 0.7rem !important; }
     .counter-pill span:last-child { font-size: 0.8rem !important; }
 }
+
+/* ── Full S&S catalog browser (GarmentModelSelect) ── */
+.catalog-search {
+    width: 100%;
+    flex-shrink: 0;
+    padding: 8px 12px;
+    border: 2px solid rgba(255, 255, 255, 0.12);
+    border-radius: 8px;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 0.82rem;
+    outline: none;
+}
+
+.catalog-search:focus {
+    border-color: #B85A36 !important;
+}
+
+.catalog-msg {
+    font-size: 0.78rem;
+    text-align: center;
+    padding: 12px;
+    opacity: 0.7;
+}
+
+/* Two across rather than four, and each card lays out sideways, so the product
+   name and spec line get a readable measure instead of wrapping every word. */
+.catalog-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 8px;
+    overflow-y: auto;
+    flex: 1 1 auto;
+    min-height: 0;
+    padding: 2px;
+}
+
+.catalog-card {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    /* Grid items default to min-width:auto, which lets a long product name push
+       the card wider than its track instead of ellipsising. */
+    min-width: 0;
+    background: rgba(255, 255, 255, 0.04);
+    border: 2px solid rgba(255, 255, 255, 0.1);
+    border-radius: 8px;
+    padding: 6px;
+    cursor: pointer;
+    text-align: left;
+    font-family: 'DM Sans', sans-serif;
+    color: #F2EBDF;
+    transition: border-color 0.15s ease, background 0.15s ease;
+}
+
+.catalog-card:hover {
+    border-color: #B85A36;
+    background: rgba(184, 90, 54, 0.12);
+}
+
+.catalog-card-active {
+    border-color: #B85A36;
+    background: rgba(184, 90, 54, 0.2);
+}
+
+.catalog-card img {
+    width: 58px;
+    height: 68px;
+    object-fit: contain;
+    flex-shrink: 0;
+    border-radius: 4px;
+    background: rgba(255, 255, 255, 0.06);
+}
+
+.catalog-card-noimg {
+    width: 58px;
+    height: 68px;
+    flex-shrink: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    font-size: 0.58rem;
+    opacity: 0.4;
+    border-radius: 4px;
+    background: rgba(255, 255, 255, 0.06);
+}
+
+/* min-width:0 lets the ellipsis rules below actually bite inside a flex row. */
+.catalog-card-text {
+    min-width: 0;
+    flex: 1 1 auto;
+}
+
+.catalog-card-brand {
+    font-size: 0.58rem;
+    opacity: 0.7;
+    line-height: 1.2;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.catalog-card-style {
+    font-size: 0.74rem;
+    font-weight: 700;
+    line-height: 1.2;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+/* Titles run long ("Unisex Garment-Dyed Heavyweight T-Shirt"), so give them two
+   lines and cut the rest rather than letting one card grow taller than its row. */
+.catalog-card-title {
+    font-size: 0.63rem;
+    line-height: 1.25;
+    margin-top: 2px;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+}
+
+.catalog-card-blurb {
+    font-size: 0.58rem;
+    opacity: 0.6;
+    line-height: 1.2;
+    margin-top: 2px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+/* All four signs always render. The unearned ones stay visible but dim, so the
+   band reads as a scale ($$ of 4) rather than as an unlabelled count. */
+.price-tier {
+    font-size: 0.72rem;
+    font-weight: 700;
+    letter-spacing: 0.06em;
+    margin-top: 3px;
+    line-height: 1;
+}
+
+.price-tier-on {
+    color: #E8A87C;
+}
+
+.price-tier-off {
+    color: #F2EBDF;
+    opacity: 0.22;
+}
+
+.catalog-pager {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 14px;
+    flex-shrink: 0;
+    padding: 2px 0 4px;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 0.72rem;
+}
+
+.catalog-pager button {
+    background: transparent;
+    border: 2px solid rgba(255, 255, 255, 0.12);
+    border-radius: 6px;
+    color: #F2EBDF;
+    padding: 3px 10px;
+    font-size: 0.72rem;
+    font-weight: 600;
+    cursor: pointer;
+}
+
+.catalog-pager button:hover:not(:disabled) {
+    border-color: #B85A36;
+}
+
+.catalog-pager button:disabled {
+    opacity: 0.3;
+    cursor: default;
+}
+
+.catalog-open {
+    background: transparent;
+    border: 2px dashed rgba(255, 255, 255, 0.18);
+    border-radius: 8px;
+    color: rgba(242, 235, 223, 0.75);
+    font-family: 'DM Sans', sans-serif;
+    font-size: 0.7rem;
+    font-weight: 600;
+    padding: 7px 10px;
+    cursor: pointer;
+    transition: border-color 0.2s ease, color 0.2s ease;
+}
+
+.catalog-open:hover {
+    border-color: #B85A36;
+    color: #F2EBDF;
+}
+
+.catalog-picked {
+    background: rgba(184, 90, 54, 0.18);
+    border: 2px solid #B85A36;
+    border-radius: 8px;
+    padding: 8px 12px;
+    font-family: 'DM Sans', sans-serif;
+    color: #F2EBDF;
+}
+
+.catalog-picked-label {
+    font-size: 0.78rem;
+    font-weight: 700;
+    line-height: 1.25;
+}
+
+.catalog-picked-title {
+    font-size: 0.7rem;
+    line-height: 1.25;
+    margin-top: 1px;
+}
+
+.catalog-picked-sub {
+    font-size: 0.66rem;
+    opacity: 0.8;
+    margin-top: 1px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    flex-wrap: wrap;
+}
+
+.catalog-picked-sub .price-tier {
+    margin-top: 0;
+    opacity: 1;
+}
+
+@media (max-width: 768px) {
+    .catalog-grid { grid-template-columns: 1fr; }
+}
