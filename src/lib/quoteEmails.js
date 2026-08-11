@@ -20,11 +20,11 @@ const HIGHLIGHT_BG = 'rgba(184,90,54,0.12)';   // clay tint for highlight boxes
 const HIGHLIGHT_BORDER = 'rgba(184,90,54,0.32)'; // clay tint for highlight borders
 const CARD_RADIUS = '10px';
 const BTN_RADIUS = '999px';                    // pill buttons per v6 frontend-design
-// Email clients strip <link> tags and most ignore web fonts entirely. We
-// still request Playfair Display + DM Sans in <head> for clients that respect
-// them (Apple Mail), and fall back to system serif/sans stacks elsewhere
-// (Gmail Web, Outlook) so it never lands on plain Times or Arial.
-const HEADING_FONT = "'Playfair Display', Georgia, 'Times New Roman', serif";
+// Email clients strip <link> tags and most ignore web fonts entirely. The site
+// sets headings in Gogh, which is self-hosted and cannot load here at all, so
+// headings fall back to the brand body face at heavy weight rather than to a
+// serif that belongs to no other Local Threads surface.
+const HEADING_FONT = "'DM Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Helvetica Neue', Helvetica, sans-serif";
 const BODY_FONT = "'DM Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Helvetica Neue', Helvetica, sans-serif";
 const LABEL_FONT = BODY_FONT;
 
@@ -59,7 +59,7 @@ const emailShell = (innerHTML, preheader = '') => `
 <html lang="en"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Local Threads</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=DM+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 </head>
 <body style="margin:0; padding:0; background:${BG}; -webkit-text-size-adjust:100%;">
 <div style="display:none; max-height:0; overflow:hidden; opacity:0; color:transparent;">${escapeHtml(preheader)}</div>

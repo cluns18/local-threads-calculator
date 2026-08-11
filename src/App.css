@@ -1,5 +1,42 @@
 @import "tailwindcss";
 
+/* ==========================================================================
+   LOCAL THREADS - CANONICAL BRAND TOKENS
+   Source of truth: the homepage build at s76qfn-tn.myshopify.com/pages/home.
+   These values are shared with the design lab and the quote form.
+   Do not fork them. If the site changes, change it here.
+   ========================================================================== */
+
+@font-face {
+  font-family: 'Gogh';
+  src: url('/fonts/Gogh-ExtraBold.woff2') format('woff2');
+  font-weight: 700 900;
+  font-style: normal;
+  font-display: swap;
+}
+
+:root {
+  --lt-charcoal: #14110E;
+  --lt-charcoal-800: #1A1612;
+  --lt-charcoal-700: #1F1B16;
+  --lt-charcoal-600: #2A241D;
+
+  --lt-cream: #F2EBDF;
+  --lt-cream-200: #E2D9C8;
+  --lt-cream-300: #C8BFAE;
+  --lt-cream-400: #A89E8C;
+
+  --lt-rust: #B85A36;
+  --lt-rust-light: #D67E4E;
+  --lt-rust-dark: #6B3520;
+
+  /* Error state. Distinct from rust so a failure never reads as an accent. */
+  --lt-error: #E5544B;
+
+  --lt-font-display: 'Gogh', 'DM Sans', ui-sans-serif, system-ui, sans-serif;
+  --lt-font-body: 'DM Sans', ui-sans-serif, system-ui, sans-serif;
+}
+
 /* ── Consistent slide layout system ── */
 .slide-container {
   display: flex;
@@ -7,7 +44,7 @@
   align-items: flex-start;
   min-height: 100vh;
   padding: 24px 16px;
-  background: #14110E;
+  background: var(--lt-charcoal);
 }
 
 .slide-page {
@@ -15,8 +52,10 @@
   flex-direction: column;
   width: 100%;
   max-width: 672px;
-  height: 600px;
-  background-color: #1F1B16;
+  height: auto;
+  min-height: 460px;
+  max-height: calc(100vh - 48px);
+  background-color: var(--lt-charcoal-700);
   border-radius: 12px;
   overflow: hidden;
   border: 1px solid rgba(255, 255, 255, 0.08);
@@ -74,42 +113,44 @@
 
 /* ── Typography ── */
 .headingColor {
-    color: #F2EBDF;
-    font-family: 'Playfair Display', Georgia, serif;
+    color: var(--lt-cream);
+    font-family: var(--lt-font-display);
     font-weight: 900;
     text-transform: uppercase;
     letter-spacing: -0.01em;
 }
 
 .bodyColor {
-    color: #F2EBDF;
-    font-family: 'DM Sans', sans-serif;
+    color: var(--lt-cream);
+    font-family: var(--lt-font-body);
     opacity: 0.85;
 }
 
 .bgColor {
-    background-color: #1F1B16;
+    background-color: var(--lt-charcoal-700);
 }
 
 /* ── Buttons ── */
 .btnColor {
-    background-color: #B85A36;
-    color: #F2EBDF;
-    font-family: 'DM Sans', sans-serif;
-    border: solid 2px #B85A36;
+    background-color: var(--lt-rust);
+    color: var(--lt-cream);
+    font-family: var(--lt-font-body);
+    border: solid 2px var(--lt-rust);
     font-weight: 600;
 }
 
 .btnColor:hover {
-    background-color: #D67E4E;
-    border-color: #D67E4E;
+    background-color: var(--lt-rust-light);
+    border-color: var(--lt-rust-light);
 }
 
 .btnInactive {
-    background-color: transparent;
-    color: rgba(242, 235, 223, 0.75);
-    font-family: 'DM Sans', sans-serif;
-    border: solid 2px rgba(255, 255, 255, 0.12);
+    /* Unselected options sat at 75% cream on a 12%-white hairline, which read as
+       disabled rather than choosable. Full-strength label on a visible surface. */
+    background-color: var(--lt-charcoal-600);
+    color: var(--lt-cream);
+    font-family: var(--lt-font-body);
+    border: solid 2px rgba(242, 235, 223, 0.22);
     font-weight: 600;
     position: relative;
     overflow: hidden;
@@ -124,7 +165,7 @@
     left: 0;
     width: 0%;
     height: 100%;
-    background-color: #B85A36;
+    background-color: var(--lt-rust);
     transition: width 0.25s linear;
     z-index: -1;
 }
@@ -134,8 +175,8 @@
 }
 
 .btnInactive:hover {
-    color: #F2EBDF;
-    border-color: #B85A36;
+    color: var(--lt-cream);
+    border-color: var(--lt-rust);
 }
 
 /* ── Inputs ── */
@@ -144,7 +185,7 @@
 .slide-page textarea {
     background: rgba(255, 255, 255, 0.06) !important;
     border-color: rgba(255, 255, 255, 0.12) !important;
-    color: #F2EBDF !important;
+    color: var(--lt-cream) !important;
 }
 
 .slide-page input::placeholder,
@@ -155,7 +196,7 @@
 .slide-page input:focus,
 .slide-page select:focus,
 .slide-page textarea:focus {
-    border-color: #B85A36 !important;
+    border-color: var(--lt-rust) !important;
     outline: none;
     box-shadow: 0 0 0 2px rgba(184, 90, 54, 0.3);
 }
@@ -164,8 +205,8 @@
 .light-card select,
 .light-card textarea {
     background: #fff !important;
-    border-color: rgba(15, 27, 51, 0.2) !important;
-    color: #0f1b33 !important;
+    border-color: rgba(20, 17, 14, 0.2) !important;
+    color: var(--lt-charcoal) !important;
 }
 
 .light-card input::placeholder,
@@ -176,7 +217,7 @@
 .light-card input:focus,
 .light-card select:focus,
 .light-card textarea:focus {
-    border-color: #B85A36 !important;
+    border-color: var(--lt-rust) !important;
     box-shadow: 0 0 0 2px rgba(184, 90, 54, 0.2);
 }
 
@@ -186,7 +227,7 @@
 .slide-content::-webkit-scrollbar-thumb { background: rgba(255, 255, 255, 0.12); border-radius: 4px; }
 
 .error-shake {
-    border: 3px solid #B85A36 !important;
+    border: 3px solid var(--lt-rust) !important;
     animation: shake 0.3s ease-in-out 2;
 }
 
@@ -202,12 +243,12 @@
 }
 
 .error-message {
-    color: #c4a24e;
+    color: var(--lt-error);
     font-size: 0.85rem;
     font-weight: bold;
     text-align: center;
     margin-top: 10px;
-    font-family: 'DM Sans';
+    font-family: var(--lt-font-body);
 }
 
 /* ── Mobile ── */

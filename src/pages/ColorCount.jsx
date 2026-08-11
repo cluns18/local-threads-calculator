@@ -36,7 +36,7 @@ export default function ColorCount({ onNext, onPrevious, selectedLocations, setC
                                     value={colorCounts[location] || 1}
                                     onChange={(e) => handleColorChange(location, parseInt(e.target.value) || 1)}
                                     className='w-20 p-2 border-b-2 text-center text-lg bg-transparent focus:outline-none'
-                                    style={{ fontFamily: "'DM Sans', sans-serif" }}
+                                    style={{ fontFamily: 'var(--lt-font-body)' }}
                                 />
                                 <input type='range' min='1' max='6' value={colorCounts[location] || 1}
                                     onChange={(e) => handleColorChange(location, parseInt(e.target.value))} className='w-full cursor-pointer' />

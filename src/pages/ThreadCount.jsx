@@ -58,17 +58,17 @@ export default function ThreadCount({ onNext, onPrevious, selectedLocations, loc
                                                 onClick={() => handleSelect(location, tier.threadCount)}
                                                 className={`text-left p-3 rounded-lg border-2 transition duration-200 ${active ? 'btnColor' : 'btnInactive'}`}
                                                 style={{
-                                                    borderColor: active ? '#B85A36' : 'rgba(255,255,255,0.12)',
+                                                    borderColor: active ? 'var(--lt-rust)' : 'rgba(255,255,255,0.12)',
                                                     background: active ? 'rgba(37,115,241,0.18)' : 'rgba(255,255,255,0.04)',
                                                 }}
                                             >
-                                                <div style={{ fontFamily: "'DM Sans', sans-serif", fontWeight: 700, fontSize: '0.95rem', color: '#F5F0E8', marginBottom: '4px' }}>
+                                                <div style={{ fontFamily: 'var(--lt-font-body)', fontWeight: 700, fontSize: '0.95rem', color: '#F5F0E8', marginBottom: '4px' }}>
                                                     {tier.label}
                                                 </div>
-                                                <div style={{ fontFamily: "'DM Sans', sans-serif", fontSize: '0.78rem', color: 'rgba(245,240,232,0.75)', lineHeight: 1.45, marginBottom: '6px' }}>
+                                                <div style={{ fontFamily: 'var(--lt-font-body)', fontSize: '0.78rem', color: 'rgba(245,240,232,0.75)', lineHeight: 1.45, marginBottom: '6px' }}>
                                                     {tier.description}
                                                 </div>
-                                                <div style={{ fontFamily: "'DM Sans', sans-serif", fontSize: '0.7rem', color: '#D67E4E', fontWeight: 600, letterSpacing: '0.04em', textTransform: 'uppercase' }}>
+                                                <div style={{ fontFamily: 'var(--lt-font-body)', fontSize: '0.7rem', color: 'var(--lt-rust-light)', fontWeight: 600, letterSpacing: '0.04em', textTransform: 'uppercase' }}>
                                                     {tier.range}
                                                 </div>
                                             </button>

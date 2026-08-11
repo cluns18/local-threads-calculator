@@ -239,12 +239,12 @@ export default function FinalQuote({
                         background: 'rgba(37,115,241,0.15)', border: '1px solid rgba(37,115,241,0.3)',
                         borderRadius: '999px', padding: '5px 16px',
                     }}>
-                        <span style={{ fontFamily: "'DM Sans', sans-serif", fontSize: '0.7rem', color: '#f0ede4', fontWeight: 600 }}>{quantity} Items</span>
+                        <span style={{ fontFamily: 'var(--lt-font-body)', fontSize: '0.7rem', color: '#f0ede4', fontWeight: 600 }}>{quantity} Items</span>
                         <span style={{ width: '1px', height: '14px', background: 'rgba(255,255,255,0.15)' }}></span>
-                        <span style={{ fontFamily: "'DM Sans', sans-serif", fontSize: '1.05rem', color: '#D67E4E', fontWeight: 700 }}>${pricePerItem.toFixed(2)}/ea</span>
+                        <span style={{ fontFamily: 'var(--lt-font-body)', fontSize: '1.05rem', color: 'var(--lt-rust-light)', fontWeight: 700 }}>${pricePerItem.toFixed(2)}/ea</span>
                     </div>
                     {/* Reserve space so the MOQ warning doesn't bounce content when it toggles */}
-                    <p style={{ color: '#c4a24e', fontSize: '0.7rem', fontFamily: "'DM Sans', sans-serif", marginTop: '4px', visibility: belowMOQ ? 'visible' : 'hidden', minHeight: '1em' }}>
+                    <p style={{ color: 'var(--lt-error)', fontSize: '0.7rem', fontFamily: 'var(--lt-font-body)', marginTop: '4px', visibility: belowMOQ ? 'visible' : 'hidden', minHeight: '1em' }}>
                         Minimum order: {MOQ} units
                     </p>
                 </div>
@@ -263,10 +263,10 @@ export default function FinalQuote({
                                         border: isActive ? '2px solid #B85A36' : '2px solid rgba(255,255,255,0.08)',
                                         transition: 'all 0.2s ease',
                                     }}>
-                                        <div className='size-label' style={{ fontFamily: "'DM Sans', sans-serif", fontWeight: 700, fontSize: '0.6rem', color: '#f0ede4', marginBottom: '2px', textTransform: 'uppercase', letterSpacing: '0.03em' }}>{size}</div>
+                                        <div className='size-label' style={{ fontFamily: 'var(--lt-font-body)', fontWeight: 700, fontSize: '0.6rem', color: '#f0ede4', marginBottom: '2px', textTransform: 'uppercase', letterSpacing: '0.03em' }}>{size}</div>
                                         <div className='flex items-center justify-center gap-0.5'>
                                             <button className='size-btn' onClick={() => handleSizeChange(size, -1)} style={{ width: '16px', height: '16px', borderRadius: '3px', border: '1px solid rgba(255,255,255,0.12)', background: 'rgba(255,255,255,0.06)', cursor: 'pointer', display: 'flex', alignItems: 'center', justifyContent: 'center', fontWeight: 700, fontSize: '0.7rem', color: '#f0ede4', padding: 0, lineHeight: 1 }}>-</button>
-                                            <input className='size-input' type='number' style={{ width: '38px', textAlign: 'center', border: '1px solid rgba(255,255,255,0.12)', borderRadius: '3px', padding: '1px 2px', fontSize: '0.7rem', fontFamily: "'DM Sans', sans-serif", fontWeight: 700, background: 'rgba(255,255,255,0.06)', color: '#f0ede4' }} value={qty} onChange={(e) => { const v = parseInt(e.target.value) || 0; setSizeBreakdown(prev => { const u = { ...prev, [size]: Math.max(0, v) }; const t = Object.values(u).reduce((s, x) => s + x, 0); if (t > 0) setQuantity(t); return u; }); }} min='0' max='1000' />
+                                            <input className='size-input' type='number' style={{ width: '38px', textAlign: 'center', border: '1px solid rgba(255,255,255,0.12)', borderRadius: '3px', padding: '1px 2px', fontSize: '0.7rem', fontFamily: 'var(--lt-font-body)', fontWeight: 700, background: 'rgba(255,255,255,0.06)', color: '#f0ede4' }} value={qty} onChange={(e) => { const v = parseInt(e.target.value) || 0; setSizeBreakdown(prev => { const u = { ...prev, [size]: Math.max(0, v) }; const t = Object.values(u).reduce((s, x) => s + x, 0); if (t > 0) setQuantity(t); return u; }); }} min='0' max='1000' />
                                             <button className='size-btn' onClick={() => handleSizeChange(size, 1)} style={{ width: '16px', height: '16px', borderRadius: '3px', border: '1px solid rgba(37,115,241,0.3)', background: 'rgba(37,115,241,0.25)', cursor: 'pointer', display: 'flex', alignItems: 'center', justifyContent: 'center', fontWeight: 700, fontSize: '0.7rem', color: '#f0ede4', padding: 0, lineHeight: 1 }}>+</button>
                                         </div>
                                     </div>
@@ -305,7 +305,7 @@ export default function FinalQuote({
                                     textAlign: 'center',
                                     fontSize: '1.6rem',
                                     fontWeight: 700,
-                                    fontFamily: "'DM Sans', sans-serif",
+                                    fontFamily: 'var(--lt-font-body)',
                                     background: 'rgba(255,255,255,0.06)',
                                     border: '1px solid rgba(255,255,255,0.12)',
                                     borderRadius: '8px',
@@ -332,11 +332,11 @@ export default function FinalQuote({
                     <div className='light-card' style={{
                         background: '#e8f0fe', borderRadius: '10px', padding: '10px 12px', textAlign: 'center',
                     }}>
-                        <p style={{ fontFamily: "'DM Sans', sans-serif", fontSize: '0.55rem', fontWeight: 500, letterSpacing: '0.14em', textTransform: 'uppercase', color: '#B85A36', marginBottom: '2px' }}>Almost There</p>
-                        <h3 style={{ color: '#0f1b33', fontSize: '0.9rem', fontWeight: '700', fontFamily: "'DM Sans', sans-serif", marginBottom: '2px' }}>
+                        <p style={{ fontFamily: 'var(--lt-font-body)', fontSize: '0.55rem', fontWeight: 500, letterSpacing: '0.14em', textTransform: 'uppercase', color: 'var(--lt-rust)', marginBottom: '2px' }}>Almost There</p>
+                        <h3 style={{ color: 'var(--lt-charcoal)', fontSize: '0.9rem', fontWeight: '700', fontFamily: 'var(--lt-font-body)', marginBottom: '2px' }}>
                             See Your Full Breakdown
                         </h3>
-                        <p style={{ color: '#4a5d80', fontSize: '0.65rem', fontFamily: "'DM Sans', sans-serif", marginBottom: '8px', lineHeight: 1.35 }}>
+                        <p style={{ color: 'var(--lt-charcoal-600)', fontSize: '0.65rem', fontFamily: 'var(--lt-font-body)', marginBottom: '8px', lineHeight: 1.35 }}>
                             Drop your info to see the full size-by-size breakdown and total.
                         </p>
 
@@ -350,16 +350,16 @@ export default function FinalQuote({
                         <button
                             onClick={() => { if (isFormValid && !belowMOQ) setPricingRevealed(true); }}
                             style={{
-                                background: isFormValid && !belowMOQ ? '#B85A36' : '#4a5d80',
+                                background: isFormValid && !belowMOQ ? 'var(--lt-rust)' : 'var(--lt-charcoal-600)',
                                 color: '#f0ede4', border: 'none', borderRadius: '999px',
                                 padding: '7px 22px', fontSize: '0.72rem', fontWeight: '600',
-                                fontFamily: "'DM Sans', sans-serif", letterSpacing: '0.06em', textTransform: 'uppercase',
+                                fontFamily: 'var(--lt-font-body)', letterSpacing: '0.06em', textTransform: 'uppercase',
                                 cursor: isFormValid && !belowMOQ ? 'pointer' : 'not-allowed',
                                 transition: 'all 0.25s ease',
                                 opacity: isFormValid && !belowMOQ ? 1 : 0.5,
                             }}
-                            onMouseEnter={(e) => { if (isFormValid && !belowMOQ) { e.target.style.background = '#D67E4E'; e.target.style.transform = 'translateY(-1px)'; } }}
-                            onMouseLeave={(e) => { e.target.style.background = '#B85A36'; e.target.style.transform = 'translateY(0)'; }}
+                            onMouseEnter={(e) => { if (isFormValid && !belowMOQ) { e.target.style.background = 'var(--lt-rust-light)'; e.target.style.transform = 'translateY(-1px)'; } }}
+                            onMouseLeave={(e) => { e.target.style.background = 'var(--lt-rust)'; e.target.style.transform = 'translateY(0)'; }}
                         >
                             {belowMOQ
                                 ? `Add ${MOQ - quantity} More To Continue`
@@ -373,30 +373,30 @@ export default function FinalQuote({
                         {/* Price highlights */}
                         <div style={{ display: 'flex', justifyContent: 'center', gap: '20px', marginBottom: '10px', flexWrap: 'wrap', alignItems: 'center' }}>
                             <div className='text-center'>
-                                <div style={{ fontFamily: "'DM Sans', sans-serif", fontSize: '0.55rem', textTransform: 'uppercase', letterSpacing: '0.12em', color: '#4a5d80', marginBottom: '1px' }}>Per Item</div>
-                                <div style={{ fontFamily: "'DM Sans', sans-serif", fontSize: '1.7rem', fontWeight: 700, color: '#0f1b33', lineHeight: 1.1 }}>${pricePerItem.toFixed(2)}</div>
+                                <div style={{ fontFamily: 'var(--lt-font-body)', fontSize: '0.55rem', textTransform: 'uppercase', letterSpacing: '0.12em', color: 'var(--lt-charcoal-600)', marginBottom: '1px' }}>Per Item</div>
+                                <div style={{ fontFamily: 'var(--lt-font-body)', fontSize: '1.7rem', fontWeight: 700, color: 'var(--lt-charcoal)', lineHeight: 1.1 }}>${pricePerItem.toFixed(2)}</div>
                             </div>
                             <div style={{ width: '1px', background: 'rgba(15,27,51,0.1)', alignSelf: 'stretch' }} />
                             <div className='text-center'>
-                                <div style={{ fontFamily: "'DM Sans', sans-serif", fontSize: '0.55rem', textTransform: 'uppercase', letterSpacing: '0.12em', color: '#4a5d80', marginBottom: '1px' }}>Total Quote</div>
-                                <div style={{ fontFamily: "'DM Sans', sans-serif", fontSize: '1.3rem', fontWeight: 700, color: '#D67E4E' }}>${totalPrice.toFixed(2)}</div>
+                                <div style={{ fontFamily: 'var(--lt-font-body)', fontSize: '0.55rem', textTransform: 'uppercase', letterSpacing: '0.12em', color: 'var(--lt-charcoal-600)', marginBottom: '1px' }}>Total Quote</div>
+                                <div style={{ fontFamily: 'var(--lt-font-body)', fontSize: '1.3rem', fontWeight: 700, color: 'var(--lt-rust-light)' }}>${totalPrice.toFixed(2)}</div>
                             </div>
                             <div style={{ width: '1px', background: 'rgba(15,27,51,0.1)', alignSelf: 'stretch' }} />
                             <div className='text-center'>
-                                <div style={{ fontFamily: "'DM Sans', sans-serif", fontSize: '0.55rem', textTransform: 'uppercase', letterSpacing: '0.12em', color: '#4a5d80', marginBottom: '1px' }}>Total Items</div>
-                                <div style={{ fontFamily: "'DM Sans', sans-serif", fontSize: '1.3rem', fontWeight: 700, color: '#0f1b33' }}>{quantity}</div>
+                                <div style={{ fontFamily: 'var(--lt-font-body)', fontSize: '0.55rem', textTransform: 'uppercase', letterSpacing: '0.12em', color: 'var(--lt-charcoal-600)', marginBottom: '1px' }}>Total Items</div>
+                                <div style={{ fontFamily: 'var(--lt-font-body)', fontSize: '1.3rem', fontWeight: 700, color: 'var(--lt-charcoal)' }}>{quantity}</div>
                             </div>
                         </div>
 
                         {/* Breakdown table with inline +/- */}
                         {sizes && sizeBreakdown && (
                             <div style={{ marginBottom: '8px' }}>
-                                <table style={{ width: '100%', borderCollapse: 'collapse', fontFamily: "'DM Sans', sans-serif", fontSize: '0.7rem' }}>
+                                <table style={{ width: '100%', borderCollapse: 'collapse', fontFamily: 'var(--lt-font-body)', fontSize: '0.7rem' }}>
                                     <thead>
                                         <tr style={{ borderBottom: '1px solid rgba(15,27,51,0.1)' }}>
-                                            <th style={{ padding: '3px 0', textAlign: 'left', color: '#4a5d80', fontWeight: 500, fontSize: '0.6rem', textTransform: 'uppercase', letterSpacing: '0.08em' }}>Size</th>
-                                            <th style={{ padding: '3px 0', textAlign: 'center', color: '#4a5d80', fontWeight: 500, fontSize: '0.6rem', textTransform: 'uppercase', letterSpacing: '0.08em' }}>Qty</th>
-                                            <th style={{ padding: '3px 0', textAlign: 'right', color: '#4a5d80', fontWeight: 500, fontSize: '0.6rem', textTransform: 'uppercase', letterSpacing: '0.08em' }}>Subtotal</th>
+                                            <th style={{ padding: '3px 0', textAlign: 'left', color: 'var(--lt-charcoal-600)', fontWeight: 500, fontSize: '0.6rem', textTransform: 'uppercase', letterSpacing: '0.08em' }}>Size</th>
+                                            <th style={{ padding: '3px 0', textAlign: 'center', color: 'var(--lt-charcoal-600)', fontWeight: 500, fontSize: '0.6rem', textTransform: 'uppercase', letterSpacing: '0.08em' }}>Qty</th>
+                                            <th style={{ padding: '3px 0', textAlign: 'right', color: 'var(--lt-charcoal-600)', fontWeight: 500, fontSize: '0.6rem', textTransform: 'uppercase', letterSpacing: '0.08em' }}>Subtotal</th>
                                         </tr>
                                     </thead>
                                     <tbody>
@@ -404,15 +404,15 @@ export default function FinalQuote({
                                             const qty = sizeBreakdown[size] || 0;
                                             return (
                                                 <tr key={size} style={{ borderBottom: '1px solid rgba(15,27,51,0.06)' }}>
-                                                    <td style={{ padding: '4px 0', color: '#0f1b33', fontWeight: 500 }}>{size}</td>
+                                                    <td style={{ padding: '4px 0', color: 'var(--lt-charcoal)', fontWeight: 500 }}>{size}</td>
                                                     <td style={{ padding: '4px 0', textAlign: 'center' }}>
                                                         <div style={{ display: 'inline-flex', alignItems: 'center', gap: '4px' }}>
-                                                            <button onClick={() => handleSizeChange(size, -1)} style={{ width: '18px', height: '18px', borderRadius: '3px', border: '1px solid rgba(15,27,51,0.15)', background: 'rgba(15,27,51,0.06)', cursor: 'pointer', display: 'flex', alignItems: 'center', justifyContent: 'center', fontWeight: 700, fontSize: '0.7rem', color: '#0f1b33', padding: 0, lineHeight: 1 }}>-</button>
-                                                            <span style={{ minWidth: '20px', textAlign: 'center', fontWeight: 600, color: qty > 0 ? '#0f1b33' : '#4a5d80' }}>{qty}</span>
-                                                            <button onClick={() => handleSizeChange(size, 1)} style={{ width: '18px', height: '18px', borderRadius: '3px', border: '1px solid rgba(37,115,241,0.3)', background: 'rgba(37,115,241,0.15)', cursor: 'pointer', display: 'flex', alignItems: 'center', justifyContent: 'center', fontWeight: 700, fontSize: '0.7rem', color: '#D67E4E', padding: 0, lineHeight: 1 }}>+</button>
+                                                            <button onClick={() => handleSizeChange(size, -1)} style={{ width: '18px', height: '18px', borderRadius: '3px', border: '1px solid rgba(15,27,51,0.15)', background: 'rgba(15,27,51,0.06)', cursor: 'pointer', display: 'flex', alignItems: 'center', justifyContent: 'center', fontWeight: 700, fontSize: '0.7rem', color: 'var(--lt-charcoal)', padding: 0, lineHeight: 1 }}>-</button>
+                                                            <span style={{ minWidth: '20px', textAlign: 'center', fontWeight: 600, color: qty > 0 ? 'var(--lt-charcoal)' : 'var(--lt-charcoal-600)' }}>{qty}</span>
+                                                            <button onClick={() => handleSizeChange(size, 1)} style={{ width: '18px', height: '18px', borderRadius: '3px', border: '1px solid rgba(37,115,241,0.3)', background: 'rgba(37,115,241,0.15)', cursor: 'pointer', display: 'flex', alignItems: 'center', justifyContent: 'center', fontWeight: 700, fontSize: '0.7rem', color: 'var(--lt-rust-light)', padding: 0, lineHeight: 1 }}>+</button>
                                                         </div>
                                                     </td>
-                                                    <td style={{ padding: '4px 0', textAlign: 'right', color: qty > 0 ? '#0f1b33' : '#4a5d80', fontFamily: "'DM Sans', sans-serif", fontWeight: 600 }}>${(qty * pricePerItem).toFixed(2)}</td>
+                                                    <td style={{ padding: '4px 0', textAlign: 'right', color: qty > 0 ? 'var(--lt-charcoal)' : 'var(--lt-charcoal-600)', fontFamily: 'var(--lt-font-body)', fontWeight: 600 }}>${(qty * pricePerItem).toFixed(2)}</td>
                                                 </tr>
                                             );
                                         })}
@@ -421,7 +421,7 @@ export default function FinalQuote({
                             </div>
                         )}
 
-                        <p style={{ fontFamily: "'DM Sans', sans-serif", fontSize: '0.6rem', color: '#4a5d80', textAlign: 'center', lineHeight: 1.4, marginBottom: '8px' }}>
+                        <p style={{ fontFamily: 'var(--lt-font-body)', fontSize: '0.6rem', color: 'var(--lt-charcoal-600)', textAlign: 'center', lineHeight: 1.4, marginBottom: '8px' }}>
                             Local pickup price. Submit to inquire about shipping. Estimate may vary slightly on final approval.
                         </p>
 
@@ -430,16 +430,16 @@ export default function FinalQuote({
                                 onClick={handleSubmit}
                                 disabled={!isFormValid || isSubmitting || belowMOQ}
                                 style={{
-                                    background: (isFormValid && !belowMOQ) ? '#B85A36' : '#4a5d80',
+                                    background: (isFormValid && !belowMOQ) ? 'var(--lt-rust)' : 'var(--lt-charcoal-600)',
                                     color: '#f0ede4', border: 'none', padding: '8px 28px', borderRadius: '999px',
-                                    fontFamily: "'DM Sans', sans-serif", fontSize: '0.75rem', fontWeight: 600,
+                                    fontFamily: 'var(--lt-font-body)', fontSize: '0.75rem', fontWeight: 600,
                                     letterSpacing: '0.06em', textTransform: 'uppercase',
                                     cursor: (isFormValid && !belowMOQ) ? 'pointer' : 'not-allowed',
                                     transition: 'all 0.25s ease',
                                     opacity: (isFormValid && !belowMOQ) ? 1 : 0.5,
                                 }}
-                                onMouseEnter={(e) => { if (isFormValid && !belowMOQ) { e.target.style.background = '#D67E4E'; e.target.style.transform = 'translateY(-1px)'; e.target.style.boxShadow = '0 6px 20px rgba(37,115,241,0.3)'; } }}
-                                onMouseLeave={(e) => { e.target.style.background = '#B85A36'; e.target.style.transform = 'translateY(0)'; e.target.style.boxShadow = 'none'; }}
+                                onMouseEnter={(e) => { if (isFormValid && !belowMOQ) { e.target.style.background = 'var(--lt-rust-light)'; e.target.style.transform = 'translateY(-1px)'; e.target.style.boxShadow = '0 6px 20px rgba(37,115,241,0.3)'; } }}
+                                onMouseLeave={(e) => { e.target.style.background = 'var(--lt-rust)'; e.target.style.transform = 'translateY(0)'; e.target.style.boxShadow = 'none'; }}
                             >
                                 {isSubmitting
                                     ? 'Sending...'
@@ -467,10 +467,10 @@ const inputStyle = {
     border: '1px solid rgba(15,27,51,0.2)',
     borderRadius: '6px',
     padding: '6px 9px',
-    fontFamily: "'DM Sans', sans-serif",
+    fontFamily: 'var(--lt-font-body)',
     fontSize: '0.7rem',
     fontWeight: 400,
-    color: '#0f1b33',
+    color: 'var(--lt-charcoal)',
     outline: 'none',
     transition: 'border-color 0.2s ease, box-shadow 0.2s ease',
 };
