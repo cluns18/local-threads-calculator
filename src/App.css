@@ -133,7 +133,9 @@
 /* ── Buttons ── */
 .btnColor {
     background-color: var(--lt-rust);
-    color: var(--lt-cream);
+    /* Cream on rust measures 3.89:1. White clears 4.5:1 and matches the site's
+       own rust CTAs. */
+    color: #ffffff;
     font-family: var(--lt-font-body);
     border: solid 2px var(--lt-rust);
     font-weight: 600;
@@ -211,7 +213,7 @@
 
 .light-card input::placeholder,
 .light-card textarea::placeholder {
-    color: rgba(15, 27, 51, 0.4) !important;
+    color: rgba(20, 17, 14, 0.45) !important;
 }
 
 .light-card input:focus,
@@ -355,7 +357,7 @@ input[type=number] {
 }
 
 .catalog-search:focus {
-    border-color: #B85A36 !important;
+    border-color: var(--lt-rust) !important;
 }
 
 .catalog-msg {
@@ -391,17 +393,17 @@ input[type=number] {
     cursor: pointer;
     text-align: left;
     font-family: 'DM Sans', sans-serif;
-    color: #F2EBDF;
+    color: var(--lt-cream);
     transition: border-color 0.15s ease, background 0.15s ease;
 }
 
 .catalog-card:hover {
-    border-color: #B85A36;
+    border-color: var(--lt-rust);
     background: rgba(184, 90, 54, 0.12);
 }
 
 .catalog-card-active {
-    border-color: #B85A36;
+    border-color: var(--lt-rust);
     background: rgba(184, 90, 54, 0.2);
 }
 
@@ -485,12 +487,12 @@ input[type=number] {
 }
 
 .price-tier-on {
-    color: #E8A87C;
+    color: var(--lt-rust-light);
 }
 
 .price-tier-off {
-    color: #F2EBDF;
-    opacity: 0.22;
+    color: var(--lt-cream);
+    opacity: 0.25;
 }
 
 .catalog-pager {
@@ -508,7 +510,7 @@ input[type=number] {
     background: transparent;
     border: 2px solid rgba(255, 255, 255, 0.12);
     border-radius: 6px;
-    color: #F2EBDF;
+    color: var(--lt-cream);
     padding: 3px 10px;
     font-size: 0.72rem;
     font-weight: 600;
@@ -516,7 +518,7 @@ input[type=number] {
 }
 
 .catalog-pager button:hover:not(:disabled) {
-    border-color: #B85A36;
+    border-color: var(--lt-rust);
 }
 
 .catalog-pager button:disabled {
@@ -538,17 +540,17 @@ input[type=number] {
 }
 
 .catalog-open:hover {
-    border-color: #B85A36;
-    color: #F2EBDF;
+    border-color: var(--lt-rust);
+    color: var(--lt-cream);
 }
 
 .catalog-picked {
     background: rgba(184, 90, 54, 0.18);
-    border: 2px solid #B85A36;
+    border: 2px solid var(--lt-rust);
     border-radius: 8px;
     padding: 8px 12px;
     font-family: 'DM Sans', sans-serif;
-    color: #F2EBDF;
+    color: var(--lt-cream);
 }
 
 .catalog-picked-label {
