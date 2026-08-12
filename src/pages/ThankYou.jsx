@@ -1,11 +1,11 @@
 import React from 'react';
-import logo from '/assets/local-threads-logo.png';
+import logo from '/assets/local-threads-wordmark.png';
 
 export default function ThankYou() {
     return (
         <>
             <div className='slide-header'>
-                <img src={logo} alt='Local Threads' style={{ width: '48px', height: 'auto', margin: '0 auto 10px' }} />
+                <img src={logo} alt='Local Threads' style={{ width: '105px', height: 'auto', margin: '0 auto 10px' }} />
                 <h1 className='text-3xl font-bold headingColor'>You're All Set</h1>
                 <p className='mt-1 text-sm bodyColor'>
                     We've got everything we need. Your quote details are on the way to your inbox.

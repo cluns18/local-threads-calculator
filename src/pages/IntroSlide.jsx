@@ -1,12 +1,12 @@
 import React from 'react';
 import NavBtn from '../components/NavBtn';
-import logo from '/assets/local-threads-logo.png';
+import logo from '/assets/local-threads-wordmark.png';
 
 const IntroSlide = ({ selectedProject, setSelectedProject, onNext }) => {
     return (
         <>
             <div className='slide-header'>
-                <img src={logo} alt='Local Threads' className='intro-logo' style={{ width: '72px', height: 'auto', margin: '0 auto 12px' }} />
+                <img src={logo} alt='Local Threads' className='intro-logo' style={{ width: '158px', height: 'auto', margin: '0 auto 12px' }} />
                 <h1 className='text-3xl font-bold headingColor'>Let's Build Your Custom Order</h1>
                 <p className='mt-1 text-sm bodyColor'>
                     Walk through a few quick steps and we'll put together a quote for you.
