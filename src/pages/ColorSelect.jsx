@@ -1,6 +1,32 @@
 import React, { useState, useEffect } from 'react';
 import NavBtn from '../components/NavBtn';
 
+// S&S serves the odd swatch chip as a 404, which rendered the swatch as an
+// empty circle with no way to tell what colour it was.
+//
+// The hex is the fallback, not the garment photo. Every catalog colourway
+// carries a hex and it is the same colour the photo shows, so it fills the
+// circle cleanly and sits right next to the real chips. The garment photo is
+// shot on white, so at 34px it reads as a white chip with a tiny shirt on it,
+// which is worse than the hole it was filling. It stays as the last resort for
+// the handful of colourways with no hex.
+function swatchFallback(color) {
+    return (e) => {
+        const img = e.currentTarget;
+        if (color.hex && img.parentElement) {
+            img.style.display = 'none';
+            img.parentElement.style.background = color.hex;
+            return;
+        }
+        if (color.previewImage && !img.dataset.triedPreview) {
+            img.dataset.triedPreview = '1';
+            img.src = color.previewImage;
+            return;
+        }
+        img.style.display = 'none';
+    };
+}
+
 export default function ColorSelect({ onNext, onPrevious, selectedGarment, selectedColor, setSelectedColor }) {
     if (!selectedGarment || !selectedGarment.colors || selectedGarment.colors.length === 0) {
         return <div className='headingColor text-center p-6'>No garment selected.</div>;
@@ -41,6 +67,18 @@ export default function ColorSelect({ onNext, onPrevious, selectedGarment, selec
                         src={selectedImage}
                         alt={selectedColor?.name || 'Selected Color'}
                         className='color-img'
+                        onError={(e) => {
+                            // Same 404 risk as the chips. Try the other image S&S
+                            // gives us for this colourway before giving up.
+                            const img = e.currentTarget;
+                            const alt = selectedColor?.image;
+                            if (alt && img.src !== alt && !img.dataset.triedAlt) {
+                                img.dataset.triedAlt = '1';
+                                img.src = alt;
+                                return;
+                            }
+                            img.style.visibility = 'hidden';
+                        }}
                         style={{ maxHeight: '200px', margin: '0 auto' }}
                     />
                 </div>
@@ -80,6 +118,7 @@ export default function ColorSelect({ onNext, onPrevious, selectedGarment, selec
                                 <img
                                     src={color.image}
                                     alt={color.name}
+                                    onError={swatchFallback(color)}
                                     style={{
                                         width: '100%',
                                         height: '100%',
