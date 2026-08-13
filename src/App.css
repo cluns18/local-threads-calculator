@@ -268,7 +268,7 @@
     .btnColor, .btnInactive { font-size: 0.8rem; padding: 7px 12px; }
 
     /* Shrink intro logo on mobile */
-    .intro-logo { width: 48px !important; margin-bottom: 8px !important; }
+    .intro-logo { width: 105px !important; margin-bottom: 8px !important; }
 
     /* Garment select: image on top, grid below on mobile */
     .garment-layout {
