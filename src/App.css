@@ -47,6 +47,21 @@
   background: var(--lt-charcoal);
 }
 
+/* Embedded in a client page, the frame IS the viewport, so 100vh units measure
+   whatever height the parent already set rather than the content. Dropping them
+   lets utils/embedHeight.js report the card's real height so the parent can
+   match it. The outer padding goes too, because the page's own shell already
+   pads and rounds the frame. */
+.is-embedded .slide-container {
+  min-height: 0;
+  padding: 0;
+  background: transparent;
+}
+
+.is-embedded .slide-page {
+  max-height: none;
+}
+
 .slide-page {
   display: flex;
   flex-direction: column;
