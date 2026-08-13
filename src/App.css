@@ -544,36 +544,73 @@ input[type=number] {
     color: var(--lt-cream);
 }
 
-.catalog-picked {
-    background: rgba(184, 90, 54, 0.18);
-    border: 2px solid var(--lt-rust);
-    border-radius: 8px;
-    padding: 8px 12px;
-    font-family: 'DM Sans', sans-serif;
-    color: var(--lt-cream);
+/* The shortlist is at most six cards, so it should sit at its natural height and
+   let the slide breathe rather than stretching to fill and scrolling like the
+   catalog does. */
+.shortlist-grid {
+    flex: 0 1 auto;
+    align-content: start;
+    gap: 10px;
+    width: 100%;
 }
 
-.catalog-picked-label {
-    font-size: 0.78rem;
-    font-weight: 700;
-    line-height: 1.25;
+.shortlist-grid .catalog-card {
+    padding: 8px;
 }
 
-.catalog-picked-title {
-    font-size: 0.7rem;
-    line-height: 1.25;
-    margin-top: 1px;
+.shortlist-grid .catalog-card img,
+.shortlist-grid .catalog-card-noimg {
+    width: 68px;
+    height: 80px;
 }
 
-.catalog-picked-sub {
-    font-size: 0.66rem;
-    opacity: 0.8;
-    margin-top: 1px;
+.shortlist-grid .catalog-card-style {
+    font-size: 0.82rem;
+}
+
+.shortlist-grid .catalog-card-title {
+    font-size: 0.68rem;
+}
+
+/* The tagline is the reason to pick this blank, so it gets two lines here
+   instead of the catalog's single ellipsised one. */
+.shortlist-grid .catalog-card-blurb {
+    font-size: 0.64rem;
+    opacity: 0.75;
+    white-space: normal;
+    text-overflow: clip;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+}
+
+.shortlist-actions {
     display: flex;
-    align-items: center;
-    gap: 8px;
     flex-wrap: wrap;
+    justify-content: center;
+    gap: 8px;
+    flex-shrink: 0;
+    width: 100%;
 }
+
+.shortlist-actions .catalog-open {
+    flex: 1 1 auto;
+}
+
+@media (max-width: 640px) {
+    .shortlist-grid {
+        grid-template-columns: 1fr;
+        gap: 8px;
+        overflow-y: auto;
+        flex: 1 1 auto;
+        min-height: 0;
+    }
+
+    .shortlist-actions {
+        flex-direction: column;
+    }
+}
+
 
 .catalog-picked-sub .price-tier {
     margin-top: 0;

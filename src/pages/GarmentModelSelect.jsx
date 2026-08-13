@@ -1,19 +1,47 @@
 import React, { useEffect, useState } from 'react';
 import NavBtn from '../components/NavBtn';
-import { lookupGarment, getTagline } from '../garments/skuByLabel';
+import { lookupGarment, getCardFields } from '../garments/skuByLabel';
 import { searchCatalog, countCatalog, catalogEnabled, PAGE_SIZE } from '../utils/catalog';
 
 // How expensive this blank is relative to others of the same garment type, the
 // way Yelp rates a restaurant. The customer needs to tell a cheap tee from a
 // pricey one without us publishing what the garment itself costs.
 function PriceTier({ tier }) {
-    const level = Math.min(4, Math.max(1, tier || 1));
+    if (!tier) return null;
+    const level = Math.min(4, Math.max(1, tier));
     return (
         <div className='price-tier' aria-label={`${level} out of 4 on price`}>
             {[1, 2, 3, 4].map((i) => (
                 <span key={i} className={i <= level ? 'price-tier-on' : 'price-tier-off'}>$</span>
             ))}
         </div>
+    );
+}
+
+// One card shape for both the shortlist and the browse-all grid. The two used to
+// drift apart, which is why the recommended styles read as a bare text list next
+// to a catalog full of photographed cards.
+function GarmentCard({ fields, active, onClick }) {
+    const { brand, styleName, title, blurb, priceTier, stockImage } = fields;
+    return (
+        <button
+            onClick={onClick}
+            className={`catalog-card ${active ? 'catalog-card-active' : ''}`}
+            aria-pressed={active}
+        >
+            {stockImage ? (
+                <img src={stockImage} alt={`${brand} ${styleName}`.trim()} loading='lazy' />
+            ) : (
+                <div className='catalog-card-noimg'>No photo</div>
+            )}
+            <div className='catalog-card-text'>
+                {brand && <div className='catalog-card-brand'>{brand}</div>}
+                <div className='catalog-card-style'>{styleName}</div>
+                {title && <div className='catalog-card-title'>{title}</div>}
+                {blurb && <div className='catalog-card-blurb'>{blurb}</div>}
+                <PriceTier tier={priceTier} />
+            </div>
+        </button>
     );
 }
 
@@ -26,6 +54,20 @@ const SEARCH_HINT = {
     polos: 'Try "CORE365" or "8800"',
     hats: 'Try "Richardson" or "112"',
 };
+
+const SHORTLIST_LEAD = {
+    tshirts: 'Our go-to tees.',
+    longsleeves: 'Our go-to long sleeves.',
+    hoodies: 'Our go-to fleece.',
+    polos: 'Our go-to polos.',
+    hats: 'Our go-to caps.',
+};
+
+// The shortlist is the client's own priced sheet, so it stays in their order and
+// only the first few show up front. Anything past this is one tap away rather
+// than dropped, because a sheet row prices off their matrix and the same style
+// pulled from the catalog would price off blank cost instead.
+const SHORTLIST_VISIBLE = 5;
 
 export default function GarmentModelSelect({ pricingData, selectedGarmentType, selectedModel, setSelectedModel, selectedGarment, setSelectedGarment, onNext, onPrevious }) {
     const typeId = selectedGarmentType?.id;
@@ -42,6 +84,7 @@ export default function GarmentModelSelect({ pricingData, selectedGarmentType, s
     const [search, setSearch] = useState('');
     const [loading, setLoading] = useState(false);
     const [error, setError] = useState(null);
+    const [showAll, setShowAll] = useState(false);
 
     useEffect(() => {
         if (!selectedModel && models.length > 0) {
@@ -51,6 +94,9 @@ export default function GarmentModelSelect({ pricingData, selectedGarmentType, s
             setSelectedGarment(g);
         }
     }, [models]);
+
+    // Collapse the shortlist again when the customer switches garment type.
+    useEffect(() => { setShowAll(false); }, [typeId]);
 
     // How many styles sit behind the "browse all" prompt.
     useEffect(() => {
@@ -101,8 +147,6 @@ export default function GarmentModelSelect({ pricingData, selectedGarmentType, s
     };
 
     const garmentTypeName = selectedGarmentType?.name || 'Garment';
-    const displayImage = selectedGarment?.stockImage;
-    const displayAlt = selectedGarment?.label || selectedGarment?.name || selectedModel;
     const lastPage = Math.max(0, Math.ceil(resultTotal / PAGE_SIZE) - 1);
 
     if (browsing) {
@@ -143,29 +187,14 @@ export default function GarmentModelSelect({ pricingData, selectedGarmentType, s
 
                     {!error && !loading && results.length > 0 && (
                         <div className='catalog-grid'>
-                            {results.map((g) => {
-                                const active = selectedGarment?.id === g.id;
-                                return (
-                                    <button
-                                        key={g.id}
-                                        onClick={() => handleCatalogSelect(g)}
-                                        className={`catalog-card ${active ? 'catalog-card-active' : ''}`}
-                                    >
-                                        {g.stockImage ? (
-                                            <img src={g.stockImage} alt={g.label} loading='lazy' />
-                                        ) : (
-                                            <div className='catalog-card-noimg'>No photo</div>
-                                        )}
-                                        <div className='catalog-card-text'>
-                                            <div className='catalog-card-brand'>{g.brand}</div>
-                                            <div className='catalog-card-style'>{g.styleName}</div>
-                                            {g.title && <div className='catalog-card-title'>{g.title}</div>}
-                                            {g.blurb && <div className='catalog-card-blurb'>{g.blurb}</div>}
-                                            <PriceTier tier={g.priceTier} />
-                                        </div>
-                                    </button>
-                                );
-                            })}
+                            {results.map((g) => (
+                                <GarmentCard
+                                    key={g.id}
+                                    fields={g}
+                                    active={selectedGarment?.id === g.id}
+                                    onClick={() => handleCatalogSelect(g)}
+                                />
+                            ))}
                         </div>
                     )}
 
@@ -185,61 +214,51 @@ export default function GarmentModelSelect({ pricingData, selectedGarmentType, s
         );
     }
 
+    const hidden = Math.max(0, models.length - SHORTLIST_VISIBLE);
+    const visibleModels = showAll ? models : models.slice(0, SHORTLIST_VISIBLE);
+    const pickedFromCatalog = selectedGarment?.fromCatalog ? selectedGarment : null;
+
     return (
         <>
             <div className='slide-header'>
                 <h1 className='text-3xl font-bold headingColor'>Pick Your {garmentTypeName}</h1>
-                <p className='mt-1 text-sm bodyColor'>Different weights, fits, and price points. Choose the one that works best.</p>
+                <p className='mt-1 text-sm bodyColor'>
+                    {SHORTLIST_LEAD[typeId] || 'Our go-to blanks.'} The $ band shows how the blank prices
+                    compare inside this category.
+                </p>
             </div>
-            <div className='slide-content'>
-                <div className='flex items-center gap-6 garment-layout'>
-                    <div className='w-1/2 flex items-center justify-center garment-preview'>
-                        {displayImage ? (
-                            <img src={displayImage} alt={displayAlt} className='garment-img' style={{ maxHeight: '240px', width: 'auto', objectFit: 'contain' }} />
-                        ) : (
-                            <div className='bodyColor' style={{ opacity: 0.5, fontSize: '0.8rem', textAlign: 'center', padding: '20px' }}>
-                                Image coming soon
-                            </div>
-                        )}
-                    </div>
-                    <div className='w-1/2 grid grid-cols-1 gap-2 garment-buttons'>
-                        {selectedGarment?.fromCatalog && (
-                            <div className='catalog-picked'>
-                                <div className='catalog-picked-label'>{selectedGarment.label}</div>
-                                {selectedGarment.title && (
-                                    <div className='catalog-picked-title'>{selectedGarment.title}</div>
-                                )}
-                                <div className='catalog-picked-sub'>
-                                    {selectedGarment.blurb && <span>{selectedGarment.blurb}</span>}
-                                    <PriceTier tier={selectedGarment.priceTier} />
-                                </div>
-                            </div>
-                        )}
-                        {models.map((m) => {
-                            const tagline = getTagline(typeId, m.label);
-                            const active = selectedModel === m.label;
-                            return (
-                                <button
-                                    key={m.label}
-                                    className={`w-full rounded-lg cursor-pointer transition duration-300 garment-btn ${active ? 'btnColor' : 'btnInactive'}`}
-                                    style={{ padding: '8px 12px', textAlign: 'left', lineHeight: 1.25 }}
-                                    onClick={() => handleSelect(m.label)}
-                                >
-                                    <div style={{ fontSize: '0.78rem', fontWeight: 700, letterSpacing: '0.01em' }}>{m.label}</div>
-                                    {tagline && (
-                                        <div style={{ fontSize: '0.66rem', fontWeight: 500, opacity: active ? 0.92 : 0.65, marginTop: '1px' }}>
-                                            {tagline}
-                                        </div>
-                                    )}
-                                </button>
-                            );
-                        })}
-                        {catalogEnabled && catalogTotal > 0 && (
-                            <button className='catalog-open' onClick={() => { setSearchInput(''); setSearch(''); setPage(0); setBrowsing(true); }}>
-                                Explore all {catalogTotal} options &rarr;
-                            </button>
-                        )}
-                    </div>
+            <div className='slide-content' style={{ justifyContent: 'flex-start', gap: '8px' }}>
+                <div className='catalog-grid shortlist-grid'>
+                    {/* A catalog pick is not one of the sheet rows, so it rides along at the
+                        front of the grid instead of leaving nothing on the page looking chosen. */}
+                    {pickedFromCatalog && (
+                        <GarmentCard fields={pickedFromCatalog} active onClick={() => {}} />
+                    )}
+                    {visibleModels.map((m) => {
+                        const fields = getCardFields(typeId, m.label);
+                        if (!fields) return null;
+                        return (
+                            <GarmentCard
+                                key={m.label}
+                                fields={fields}
+                                active={!pickedFromCatalog && selectedModel === m.label}
+                                onClick={() => handleSelect(m.label)}
+                            />
+                        );
+                    })}
+                </div>
+
+                <div className='shortlist-actions'>
+                    {hidden > 0 && !showAll && (
+                        <button className='catalog-open' onClick={() => setShowAll(true)}>
+                            Show {hidden} more {garmentTypeName.toLowerCase()}{hidden === 1 ? '' : 's'}
+                        </button>
+                    )}
+                    {catalogEnabled && catalogTotal > 0 && (
+                        <button className='catalog-open' onClick={() => { setSearchInput(''); setSearch(''); setPage(0); setBrowsing(true); }}>
+                            Explore all {catalogTotal} options &rarr;
+                        </button>
+                    )}
                 </div>
             </div>
             <div className='slide-nav'>
