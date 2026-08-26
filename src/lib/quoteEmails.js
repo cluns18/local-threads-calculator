@@ -71,7 +71,7 @@ const emailShell = (innerHTML, preheader = '') => `
             </td></tr>
             ${innerHTML}
             <tr><td style="padding:28px 8px 0; text-align:center; border-top:1px solid ${SUBTLE_LINE};">
-                <p style="font-family:${BODY_FONT}; font-size:12px; color:${TEXT_MUTED}; margin:20px 0 6px; line-height:1.7;">${escapeHtml(SHOP_CONFIG.shop_name)} &middot; 955 Checkrein Ave, Columbus, OH 43229</p>
+                <p style="font-family:${BODY_FONT}; font-size:12px; color:${TEXT_MUTED}; margin:20px 0 6px; line-height:1.7;">${escapeHtml(SHOP_CONFIG.shop_name)} &middot; ${escapeHtml(SHOP_CONFIG.shop_address)}</p>
                 <p style="font-family:${BODY_FONT}; font-size:12px; color:${TEXT_MUTED}; margin:0; line-height:1.7;"><a href="tel:${escapeHtml(SHOP_CONFIG.shop_phone)}" style="color:${TEXT_MUTED}; text-decoration:none;">${escapeHtml(SHOP_CONFIG.shop_phone)}</a> &middot; <a href="mailto:${escapeHtml(SHOP_CONFIG.shop_email)}" style="color:${ACCENT_SOFT}; text-decoration:none;">${escapeHtml(SHOP_CONFIG.shop_email)}</a> &middot; <a href="https://www.localthreadsohio.com" style="color:${ACCENT_SOFT}; text-decoration:none;">localthreadsohio.com</a></p>
             </td></tr>
         </table>

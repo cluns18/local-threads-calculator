@@ -4,6 +4,7 @@ const SHOP_CONFIG = {
     shop_email_cc: '',
     shop_email_bcc: 'brian@olivebranchgrowth.com',
     shop_phone: '(614) 725-9005',
+    shop_address: '1021 Checkrein Ave, Columbus, OH 43229',
     owner_name: 'Ryan & Candice',
     accent_color: '#B85A36',
     accent_hover: '#D67E4E',
