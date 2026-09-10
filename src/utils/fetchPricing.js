@@ -71,16 +71,29 @@ const EMBROIDERY = {
     ],
 };
 
-// Patches placeholders (disabled in v0.1 until Candice confirms patch program)
-const EMPTY_SECTION = { tiers: [], rows: [] };
+// Patches. PROVISIONAL, 2026-09-10. Local Threads' pricing sheet (2026-07-16) has no patch
+// section, and until 9/10 every patch quote came back $0.00, which Candice flagged. Until she
+// sends patch numbers, every patch type and size prices off her EMBROIDERY base table (her own
+// confirmed per-item numbers by quantity), so a customer sees a real Local Threads price instead
+// of nothing. When the patch sheet arrives, replace the rows below with the real spread by type
+// and size; the lookup in functions.js matches on row label prefix (size), so keep the labels.
+const PATCH_TIERS = EMBROIDERY.tiers;
+const PATCH_BASE = EMBROIDERY.rows[0].prices;
+function patchSection(sizes) {
+    return { tiers: PATCH_TIERS, rows: sizes.map(size => ({ label: `${size} patch`, prices: [...PATCH_BASE] })) };
+}
+const EMBROIDERED_PATCHES = patchSection(['1"', '2"', '3"', '4"', '5"']);
+const PRINTED_PATCHES = patchSection(['1"', '2"', '3"', '4"']);
+const LEATHER_PATCHES = patchSection(['1"', '2"', '3"', '4"']);
+const LEATHERETTE_PATCHES = patchSection(['1"', '2"', '3"', '4"']);
 
 const STATIC_PRICING = {
     screenPrinting: SCREEN_PRINTING,
     embroidery: EMBROIDERY,
-    embroideredPatches: EMPTY_SECTION,
-    printedPatches: EMPTY_SECTION,
-    leatherPatches: EMPTY_SECTION,
-    leatherettePatches: EMPTY_SECTION,
+    embroideredPatches: EMBROIDERED_PATCHES,
+    printedPatches: PRINTED_PATCHES,
+    leatherPatches: LEATHER_PATCHES,
+    leatherettePatches: LEATHERETTE_PATCHES,
     tshirts: buildGarmentSection(tshirts),
     longsleeves: buildGarmentSection(longsleeves),
     hoodies: buildGarmentSection(hoodies),
