@@ -635,3 +635,312 @@ input[type=number] {
 @media (max-width: 768px) {
     .catalog-grid { grid-template-columns: 1fr; }
 }
+
+/* ==========================================================================
+   Garment step, design-studio style (2026-09-29).
+   Three featured cards per type with a badge, a tall photo, a headline and
+   three spec-sheet reasons, matching src/app/order/garment/page.tsx in the
+   Olive Branch Apparel Design Studio. Same card shape carries the rest of the
+   sheet and the catalog grid so nothing on the step reads as a text list.
+   Every colour is a Local Threads token; muted text is --lt-cream-300 on
+   charcoal (about 10:1), never a mid gray.
+   ========================================================================== */
+@keyframes fadeSlideUp {
+    from { opacity: 0; transform: translateY(10px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+.pick-content {
+    justify-content: flex-start;
+    gap: 12px;
+    padding-top: 12px;
+}
+
+.pick-grid {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 14px;
+    width: 100%;
+    align-items: stretch;
+    padding: 12px 2px 2px;
+}
+
+.pick-grid--picked {
+    grid-template-columns: minmax(0, 1fr);
+    padding-bottom: 0;
+}
+
+.pick-grid--more,
+.pick-grid--catalog {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 10px;
+}
+
+.pick-grid--catalog {
+    overflow-y: auto;
+    flex: 1 1 auto;
+    min-height: 0;
+}
+
+.pick-card {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    min-width: 0;
+    background: var(--lt-charcoal-700);
+    border: 2px solid rgba(242, 235, 223, 0.14);
+    border-radius: 16px;
+    padding: 18px 14px 14px;
+    cursor: pointer;
+    font-family: var(--lt-font-body);
+    color: var(--lt-cream);
+    transition: border-color 0.2s ease, box-shadow 0.2s ease, transform 0.2s ease;
+}
+
+.pick-card:hover {
+    border-color: var(--lt-cream-400);
+    box-shadow: 0 8px 22px rgba(0, 0, 0, 0.35);
+}
+
+.pick-card.is-active {
+    border-color: var(--lt-rust);
+    box-shadow: 0 0 0 3px rgba(184, 90, 54, 0.35), 0 8px 22px rgba(0, 0, 0, 0.35);
+    transform: scale(1.02);
+}
+
+.pick-card--compact {
+    padding: 12px 10px 10px;
+    border-radius: 12px;
+}
+
+.pick-badge {
+    position: absolute;
+    top: -11px;
+    left: 50%;
+    transform: translateX(-50%);
+    white-space: nowrap;
+    background: var(--lt-rust);
+    color: var(--lt-cream);
+    font-family: var(--lt-font-body);
+    font-size: 0.6rem;
+    font-weight: 700;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    padding: 4px 11px;
+    border-radius: 999px;
+    border: 1px solid var(--lt-rust-light);
+}
+
+.pick-selected {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    width: 22px;
+    height: 22px;
+    border-radius: 50%;
+    background: var(--lt-rust);
+    color: var(--lt-cream);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.pick-selected .pick-check {
+    width: 12px;
+    height: 12px;
+}
+
+.pick-card-img {
+    width: 100%;
+    height: 170px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: rgba(242, 235, 223, 0.06);
+    border-radius: 12px;
+    overflow: hidden;
+    margin-bottom: 10px;
+}
+
+.pick-card--compact .pick-card-img {
+    height: 110px;
+}
+
+.pick-card-img img {
+    max-width: 100%;
+    max-height: 100%;
+    object-fit: contain;
+}
+
+.pick-card-noimg {
+    font-size: 0.7rem;
+    color: var(--lt-cream-300);
+}
+
+.pick-card-brand {
+    font-size: 0.64rem;
+    font-weight: 700;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--lt-cream-300);
+}
+
+.pick-card-style {
+    font-family: var(--lt-font-display);
+    font-size: 1.05rem;
+    font-weight: 800;
+    line-height: 1.15;
+    margin-top: 2px;
+    color: var(--lt-cream);
+}
+
+.pick-card--compact .pick-card-style {
+    font-size: 0.9rem;
+}
+
+.pick-card-title {
+    font-size: 0.74rem;
+    line-height: 1.25;
+    margin-top: 3px;
+    color: var(--lt-cream-200);
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+}
+
+.pick-card-head {
+    font-size: 0.86rem;
+    font-weight: 700;
+    line-height: 1.25;
+    margin-top: 8px;
+    color: var(--lt-rust-light);
+}
+
+.pick-card--compact .pick-card-head {
+    font-size: 0.74rem;
+    margin-top: 5px;
+}
+
+.pick-card-bullets {
+    list-style: none;
+    padding: 0;
+    margin: 10px 0 0;
+    text-align: left;
+    display: grid;
+    gap: 6px;
+    width: 100%;
+}
+
+.pick-card-bullets li {
+    display: flex;
+    gap: 7px;
+    align-items: flex-start;
+    font-size: 0.76rem;
+    line-height: 1.35;
+    color: var(--lt-cream-200);
+}
+
+.pick-card-bullets .pick-check {
+    flex-shrink: 0;
+    width: 12px;
+    height: 12px;
+    margin-top: 3px;
+    color: var(--lt-rust-light);
+}
+
+.pick-card-foot {
+    margin-top: auto;
+    padding-top: 10px;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 3px;
+}
+
+.pick-swatches {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    gap: 4px;
+}
+
+.pick-swatch {
+    width: 14px;
+    height: 14px;
+    border-radius: 50%;
+    border: 1px solid rgba(242, 235, 223, 0.35);
+    box-shadow: inset 0 0 0 1px rgba(0, 0, 0, 0.25);
+}
+
+.pick-swatch-more {
+    font-size: 0.68rem;
+    font-weight: 700;
+    margin-left: 2px;
+    color: var(--lt-cream-200);
+}
+
+.pick-card-count {
+    font-size: 0.68rem;
+    color: var(--lt-cream-300);
+}
+
+.pick-card .price-tier {
+    margin-top: 2px;
+}
+
+.pick-actions {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 8px;
+    flex-shrink: 0;
+    width: 100%;
+    padding-bottom: 4px;
+}
+
+.pick-actions .catalog-open {
+    flex: 1 1 auto;
+    color: var(--lt-cream-200);
+}
+
+@media (max-width: 900px) {
+    .pick-grid--more,
+    .pick-grid--catalog {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+}
+
+@media (max-width: 640px) {
+    .pick-content {
+        overflow-y: auto;
+    }
+
+    .pick-grid,
+    .pick-grid--more,
+    .pick-grid--catalog {
+        grid-template-columns: minmax(0, 1fr);
+        gap: 14px;
+    }
+
+    .pick-grid--catalog {
+        overflow: visible;
+        flex: 0 0 auto;
+    }
+
+    .pick-card-img {
+        height: 120px;
+    }
+
+    .pick-card--compact .pick-card-img {
+        height: 96px;
+    }
+
+    .pick-actions {
+        flex-direction: column;
+    }
+}
