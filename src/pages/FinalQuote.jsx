@@ -17,7 +17,7 @@ export default function FinalQuote({
     onNext, onPrevious, pricingData,
     selectedProject, selectedGarmentType, selectedModel,
     selectedGarment, selectedColor, selectedArtwork, artworkDescription,
-    selectedLocation, locationColorCounts, locationThreadCounts,
+    selectedLocation, locationColorCounts, locationThreadCounts, printLocations,
     selectedPatchType, selectedPatchSize, setFinalQuote
 }) {
     const isHat = selectedGarmentType?.id && HAT_TYPES.includes(selectedGarmentType.id);
@@ -110,16 +110,29 @@ export default function FinalQuote({
                 .join(', ') || 'Standard'
             : `${selectedPatchType} - ${selectedPatchSize}`;
 
-        const artworkUploaded = selectedArtwork && !selectedArtwork.startsWith('pending:');
-        const pendingFilename = selectedArtwork && selectedArtwork.startsWith('pending:')
-            ? selectedArtwork.slice('pending:'.length)
-            : null;
+        // One artwork value for the shop: the file's URL, or a plain sentence saying
+        // why there is no file, so a failed upload is never silently lost.
+        const artworkValue = (artwork) => {
+            if (artwork && !artwork.startsWith('pending:')) return artwork;
+            if (artwork) return `Upload did not complete. User selected file: ${artwork.slice('pending:'.length)}`;
+            return 'No file uploaded';
+        };
 
-        const uploadedArtworkValue = artworkUploaded
-            ? selectedArtwork
-            : pendingFilename
-                ? `Upload did not complete. User selected file: ${pendingFilename}`
-                : 'No file uploaded';
+        // Garment jobs carry artwork per print location. Patches still send one file.
+        const artworkByLocation = isPatch
+            ? []
+            : (printLocations || []).map((l) => ({
+                location: l.name,
+                file: artworkValue(l.artwork),
+                description: l.description.trim(),
+            }));
+        const firstUploaded = artworkByLocation.find((a) => /^https?:\/\//i.test(a.file));
+        const uploadedArtworkValue = isPatch
+            ? artworkValue(selectedArtwork)
+            : (firstUploaded?.file || artworkByLocation.find((a) => a.file !== 'No file uploaded')?.file || 'No file uploaded');
+        const artworkNotes = isPatch
+            ? artworkDescription
+            : artworkByLocation.filter((a) => a.description).map((a) => `${a.location}: ${a.description}`).join(' | ');
 
         const garmentShade = selectedColor
             ? (selectedColor.underbase === 0 ? 'Light' : 'Dark')
@@ -145,7 +158,8 @@ export default function FinalQuote({
             pricePerItem: pricePerItem.toFixed(2),
             totalQuote: totalPrice.toFixed(2),
             uploadedArtwork: uploadedArtworkValue,
-            artworkDescription: artworkDescription || 'No description provided',
+            artworkDescription: artworkNotes || 'No description provided',
+            artworkByLocation,
             submittedAtISO: new Date().toISOString(),
         });
 

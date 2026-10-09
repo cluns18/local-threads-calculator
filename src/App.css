@@ -192,7 +192,9 @@
 }
 
 .btnInactive:hover {
-    color: var(--lt-cream);
+    /* The rust fill sweeps in on hover. Cream on rust is 3.89:1, white is 4.61:1,
+       the same reason .btnColor uses white. */
+    color: #ffffff;
     border-color: var(--lt-rust);
 }
 
@@ -944,3 +946,112 @@ input[type=number] {
         flex-direction: column;
     }
 }
+
+/* ── Print location tabs (pages/PrintLocations.jsx) ── */
+.loc-tabs {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 8px;
+    margin-bottom: 16px;
+}
+
+.loc-tab {
+    padding: 8px 20px;
+    border-radius: 999px;
+    font-size: 0.95rem;
+    cursor: pointer;
+}
+
+/* A location that is not on the quote yet. Dashed so it reads as "add", with the
+   label at full strength so it never reads as disabled. */
+.loc-tab-add {
+    background: transparent;
+    color: var(--lt-cream);
+    border: 2px dashed rgba(242, 235, 223, 0.5);
+    font-family: var(--lt-font-body);
+    font-weight: 600;
+    transition: background-color 0.2s ease, border-color 0.2s ease;
+}
+
+.loc-tab-add:hover {
+    background: var(--lt-rust-dark);
+    border-color: var(--lt-rust-light);
+    color: #ffffff;
+}
+
+.loc-panel {
+    padding: 16px;
+    border-radius: 10px;
+    background: var(--lt-charcoal-800);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.loc-chip {
+    padding: 6px 14px;
+    border-radius: 999px;
+    font-size: 0.82rem;
+    cursor: pointer;
+}
+
+.loc-file {
+    display: inline-block;
+    padding: 8px 18px;
+    border-radius: 8px;
+    font-size: 0.85rem;
+    cursor: pointer;
+}
+
+.loc-file:focus-within {
+    border-color: var(--lt-rust-light);
+    box-shadow: 0 0 0 2px rgba(184, 90, 54, 0.3);
+}
+
+.loc-stepper {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.loc-step {
+    width: 40px;
+    height: 40px;
+    border-radius: 8px;
+    font-size: 1.25rem;
+    line-height: 1;
+    cursor: pointer;
+}
+
+.loc-step:disabled {
+    cursor: not-allowed;
+    opacity: 0.4;
+}
+
+.loc-step:disabled::before {
+    display: none;
+}
+
+.loc-count {
+    min-width: 28px;
+    text-align: center;
+    font-size: 1.75rem;
+}
+
+.loc-remove {
+    display: inline-block;
+    margin-top: 16px;
+    padding: 0;
+    background: none;
+    border: none;
+    color: var(--lt-cream-200);
+    font-family: var(--lt-font-body);
+    font-size: 0.8rem;
+    font-weight: 600;
+    text-decoration: underline;
+    cursor: pointer;
+}
+
+.loc-remove:hover {
+    color: #ffffff;
+}
+

@@ -104,7 +104,7 @@ function renderLocationCounts(map, suffix) {
     return entries
         .map(
             ([loc, val]) =>
-                `<div style="font-family:${BODY_FONT}; font-size:14px; color:${TEXT}; margin:0 0 4px;"><strong style="color:${ACCENT_SOFT};">${escapeHtml(loc)}:</strong> ${escapeHtml(val)} ${escapeHtml(suffix)}</div>`
+                `<div style="font-family:${BODY_FONT}; font-size:14px; color:${TEXT}; margin:0 0 4px;"><strong style="color:${ACCENT_SOFT};">${escapeHtml(loc)}:</strong> ${escapeHtml(val)} ${escapeHtml(Number(val) === 1 ? suffix.replace(/s$/, '') : suffix)}</div>`
         )
         .join('');
 }
@@ -119,7 +119,7 @@ export function buildMerchantHTML(data) {
         patchType, patchSize,
         sizeBreakdown,
         quantity, pricePerItem, totalQuote,
-        uploadedArtwork, artworkDescription,
+        uploadedArtwork, artworkDescription, artworkByLocation,
         submittedAtISO,
     } = data;
 
@@ -207,9 +207,37 @@ export function buildMerchantHTML(data) {
         `)
         : null;
 
+    // Garment jobs send artwork per print location (front, back, sleeve), each with
+    // its own file and its own notes, so the art team never has to guess which file
+    // goes where. Patches and older payloads fall through to the single card below.
+    const perLocation = Array.isArray(artworkByLocation) ? artworkByLocation : [];
+    const locationArtworkCard = perLocation.length > 0
+        ? card(`
+        ${sectionLabel(perLocation.length === 1 ? 'Artwork' : `Artwork · ${perLocation.length} Locations`)}
+        ${perLocation.map((a, i) => {
+            const isURL = a.file && /^https?:\/\//i.test(a.file);
+            return `
+            <div style="${i > 0 ? `margin-top:18px; padding-top:18px; border-top:1px solid ${SUBTLE_LINE};` : ''}">
+                <p style="font-family:${HEADING_FONT}; font-size:15px; color:${TEXT}; margin:0 0 10px; font-weight:800;">${escapeHtml(a.location)}</p>
+                ${
+                    isURL
+                        ? `<a href="${escapeHtml(a.file)}" style="display:inline-block; background:${ACCENT}; color:#ffffff; font-family:${HEADING_FONT}; font-size:14px; font-weight:600; padding:12px 26px; border-radius:${BTN_RADIUS}; text-decoration:none; letter-spacing:0.02em;">Open ${escapeHtml(a.location)} Artwork</a>
+                           <p style="font-family:${BODY_FONT}; font-size:12px; color:${TEXT_MUTED}; margin:10px 0 0; word-break:break-all;"><a href="${escapeHtml(a.file)}" style="color:${TEXT_MUTED}; text-decoration:underline;">${escapeHtml(a.file)}</a></p>`
+                        : `<p style="font-family:${BODY_FONT}; font-size:14px; color:${TEXT}; margin:0; font-weight:600;">${escapeHtml(a.file || 'No file uploaded')}</p>`
+                }
+                ${
+                    a.description
+                        ? `<p style="font-family:${BODY_FONT}; font-size:13px; color:${TEXT_MUTED}; margin:12px 0 0; padding:12px 14px; background:rgba(255,255,255,0.05); border-radius:8px; border-left:3px solid ${ACCENT};"><strong style="color:${TEXT};">Notes:</strong> ${escapeHtml(a.description)}</p>`
+                        : ''
+                }
+            </div>`;
+        }).join('')}
+    `)
+        : null;
+
     // Artwork card with prominent button to open file
     const artworkIsURL = uploadedArtwork && /^https?:\/\//i.test(uploadedArtwork);
-    const artworkCard = card(`
+    const artworkCard = locationArtworkCard || card(`
         ${sectionLabel('Artwork')}
         ${
             artworkIsURL
