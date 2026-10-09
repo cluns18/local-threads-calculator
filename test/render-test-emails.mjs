@@ -33,6 +33,15 @@ const merchantPayload = {
     totalQuote: '415.80',
     uploadedArtwork: 'https://firebasestorage.googleapis.com/v0/b/local-threads-calc.firebasestorage.app/o/test%2Facme-roofing-logo.png?alt=media&token=demo',
     artworkDescription: 'White ink on front, single color back. Logo should be centered and roughly 9 inches wide on the front.',
+    // Garment jobs send artwork per print location (pages/PrintLocations.jsx).
+    artworkByLocation: [
+        {
+            location: 'Front Center',
+            file: 'https://firebasestorage.googleapis.com/v0/b/local-threads-calc.firebasestorage.app/o/test%2Facme-roofing-logo.png?alt=media&token=demo',
+            description: 'White ink, centered, roughly 9 inches wide.',
+        },
+        { location: 'Back Center', file: 'No file uploaded', description: 'Company name in one color across the shoulders.' },
+    ],
     submittedAtISO: new Date().toISOString(),
 };
 

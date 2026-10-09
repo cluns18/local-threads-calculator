@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useMemo } from 'react';
 import './App.css';
 import { fetchPricing } from './utils/fetchPricing';
 import { initAnalytics, trackFunnelStep } from './utils/analytics';
@@ -8,9 +8,7 @@ import GarmentModelSelect from './pages/GarmentModelSelect';
 import PatchTypeSelect from './pages/PatchTypeSelect';
 import PatchSizeSelect from './pages/PatchSizeSelect';
 import ArtworkSelect from './pages/ArtworkSelect';
-import LocationSelect from './pages/LocationSelect';
-import ColorCount from './pages/ColorCount';
-import ThreadCount from './pages/ThreadCount';
+import PrintLocations, { hasArtwork } from './pages/PrintLocations';
 import ColorSelect from './pages/ColorSelect';
 import FinalQuote from './pages/FinalQuote';
 import ThankYou from './pages/ThankYou';
@@ -29,9 +27,22 @@ function App() {
     const [selectedPatchSize, setSelectedPatchSize] = useState(null);
     const [selectedArtwork, setSelectedArtwork] = useState(null);
     const [artworkDescription, setArtworkDescription] = useState(null);
-    const [selectedLocation, setSelectedLocation] = useState([]);
-    const [locationColorCounts, setLocationColorCounts] = useState({});
-    const [locationThreadCounts, setLocationThreadCounts] = useState({});
+    // Garment jobs: one entry per print location, each with its own artwork and
+    // its own ink colours or stitch level. Patches still use the single artwork
+    // step above.
+    const [printLocations, setPrintLocations] = useState([]);
+    const isEmbroideryJob = selectedProject === 'embroidery';
+    // The price engine and the quote emails read locations as a name list plus a
+    // count per name. Memoized so the quote step does not re-price on every render.
+    const selectedLocation = useMemo(() => printLocations.map((l) => l.name), [printLocations]);
+    const locationColorCounts = useMemo(
+        () => (isEmbroideryJob ? {} : Object.fromEntries(printLocations.map((l) => [l.name, l.colors]))),
+        [printLocations, isEmbroideryJob]
+    );
+    const locationThreadCounts = useMemo(
+        () => (isEmbroideryJob ? Object.fromEntries(printLocations.map((l) => [l.name, l.threads])) : {}),
+        [printLocations, isEmbroideryJob]
+    );
     const [finalQuote, setFinalQuote] = useState(null);
     const [hasError, setHasError] = useState(false);
 
@@ -62,7 +73,7 @@ function App() {
         else if (currentSlide === 'patchSize' && !selectedPatchSize) isValid = false;
         else if (currentSlide === 'colorSelect' && !selectedColor) isValid = false;
         else if (currentSlide === 'artworkSelect' && !(selectedArtwork || artworkDescription)) isValid = false;
-        else if (currentSlide === 'locationSelect' && selectedLocation.length === 0) isValid = false;
+        else if (currentSlide === 'printLocations' && !printLocations.some(hasArtwork)) isValid = false;
 
         if (!isValid) {
             setHasError(true);
@@ -80,20 +91,14 @@ function App() {
         else if (currentSlide === 'garmentType') nextSlide = 'garmentModel';
         else if (currentSlide === 'garmentModel') {
             if (selectedGarment && selectedGarment.colors?.length) nextSlide = 'colorSelect';
-            else nextSlide = 'artworkSelect';
+            else nextSlide = 'printLocations';
         }
-        else if (currentSlide === 'colorSelect') nextSlide = 'artworkSelect';
+        else if (currentSlide === 'colorSelect') nextSlide = 'printLocations';
         else if (currentSlide === 'patchType') nextSlide = 'patchSize';
         else if (currentSlide === 'patchSize') nextSlide = 'artworkSelect';
-        else if (currentSlide === 'artworkSelect') {
-            if (selectedProject === 'patches') nextSlide = 'finalQuote';
-            else nextSlide = 'locationSelect';
-        }
-        else if (currentSlide === 'locationSelect') {
-            if (selectedProject === 'screenPrinting') nextSlide = 'colorCount';
-            else nextSlide = 'threadCount';
-        }
-        else if (currentSlide === 'colorCount' || currentSlide === 'threadCount') nextSlide = 'finalQuote';
+        // Only patches reach the single artwork step now.
+        else if (currentSlide === 'artworkSelect') nextSlide = 'finalQuote';
+        else if (currentSlide === 'printLocations') nextSlide = 'finalQuote';
         else if (currentSlide === 'finalQuote') nextSlide = 'thankYou';
 
         if (nextSlide) {
@@ -107,10 +112,10 @@ function App() {
             const previousSlide = slideHistory[slideHistory.length - 1];
 
             // Reset state when going back
-            if (previousSlide === 'garmentType') { setSelectedModel(null); setSelectedGarment(null); setSelectedColor(null); }
+            // A different garment type has different placements (no sleeve on a tee).
+            if (previousSlide === 'garmentType') { setSelectedModel(null); setSelectedGarment(null); setSelectedColor(null); setPrintLocations([]); }
             if (previousSlide === 'garmentModel') { setSelectedColor(null); }
-            if (previousSlide === 'intro') { setSelectedGarmentType(null); setSelectedPatchType(null); }
-            if (previousSlide === 'locationSelect') { setLocationColorCounts({}); setLocationThreadCounts({}); }
+            if (previousSlide === 'intro') { setSelectedGarmentType(null); setSelectedPatchType(null); setPrintLocations([]); }
 
             const newHistory = slideHistory.slice(0, -1);
             setCurrentSlide(previousSlide);
@@ -127,11 +132,9 @@ function App() {
             patchSize: '3 - Patch Size',
             colorSelect: '5 - Color',
             artworkSelect: '6 - Artwork',
-            locationSelect: '7 - Location',
-            colorCount: '8 - Color Count',
-            threadCount: '8 - Thread Count',
-            finalQuote: '9 - Quote',
-            thankYou: '10 - Confirmation'
+            printLocations: '6 - Artwork & Locations',
+            finalQuote: '7 - Quote',
+            thankYou: '8 - Confirmation'
         };
 
         window.parent.postMessage(
@@ -230,30 +233,14 @@ function App() {
                         setArtworkDescription={setArtworkDescription}
                     />
                 )}
-                {currentSlide === 'locationSelect' && (
-                    <LocationSelect
+                {currentSlide === 'printLocations' && (
+                    <PrintLocations
                         onNext={handleNext}
                         onPrevious={handlePrevious}
                         selectedGarmentType={selectedGarmentType}
                         selectedProject={selectedProject}
-                        setSelectedLocation={setSelectedLocation}
-                    />
-                )}
-                {currentSlide === 'colorCount' && (
-                    <ColorCount
-                        onNext={handleNext}
-                        onPrevious={handlePrevious}
-                        selectedLocations={selectedLocation}
-                        setColorCounts={setLocationColorCounts}
-                    />
-                )}
-                {currentSlide === 'threadCount' && (
-                    <ThreadCount
-                        onNext={handleNext}
-                        onPrevious={handlePrevious}
-                        selectedLocations={selectedLocation}
-                        locationThreadCounts={locationThreadCounts}
-                        setLocationThreadCounts={setLocationThreadCounts}
+                        printLocations={printLocations}
+                        setPrintLocations={setPrintLocations}
                     />
                 )}
                 {currentSlide === 'finalQuote' && (
@@ -271,6 +258,7 @@ function App() {
                         selectedLocation={selectedLocation}
                         locationColorCounts={locationColorCounts}
                         locationThreadCounts={locationThreadCounts}
+                        printLocations={printLocations}
                         selectedPatchType={selectedPatchType}
                         selectedPatchSize={selectedPatchSize}
                         setFinalQuote={setFinalQuote}
