@@ -201,7 +201,7 @@ export default function FinalQuote({
 
         try {
             await Promise.all([
-                // Merchant notification: ryan@ as TO, brian@ on BCC.
+                // Merchant notification: candice@ as TO, ryan@ on CC, brian@ on BCC (SHOP_CONFIG).
                 // Customer email goes on Reply-To so a single tap on Reply routes to them.
                 postEmail({
                     to: SHOP_CONFIG.shop_email,

@@ -1,7 +1,10 @@
 const SHOP_CONFIG = {
     shop_name: 'Local Threads',
-    shop_email: 'ryan@localthreadsohio.com',
-    shop_email_cc: '',
+    // Leads go to whoever answers them, the same list as the quote form (shops/localthreads.json
+    // in obg-mail-api): To Candice, Cc Ryan. Until 2026-11-05 this was Ryan only, and two real
+    // quotes (Stacy Buck $372, Kaleigh Back $520) never reached Candice.
+    shop_email: 'candice@localthreadsohio.com',
+    shop_email_cc: 'ryan@localthreadsohio.com',
     shop_email_bcc: 'brian@olivebranchgrowth.com',
     shop_phone: '(614) 725-9005',
     shop_address: '1021 Checkrein Ave, Columbus, OH 43229',
